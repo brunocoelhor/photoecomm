@@ -22,7 +22,7 @@
 	                    <tr>
 							<th>Nome</th>
 							<!-- <th class="">Categoria</th> -->
-							<th class="text-center">Adicionar</th>							
+							<th class="text-center">Adicionar</th>
 							<th class="text-center">Ver</th>
 							<th class="text-center">Excluir</th>
 	                    </tr>
@@ -31,13 +31,13 @@
 	                <?php foreach($albums as $album):?>
 						<tr>
 							<td><?= $album->name; ?></td>
-							<!-- <td class=""><?= $album->category_id; ?></td> 
+							<!-- <td class=""><?= $album->category_id; ?></td>
 							<td><a href="<?php echo site_url();?>/admin/configurar/album/foto/<?php echo $album->id;  ?>" class="btn btn-flat btn-info glyphicon glyphicon-picture"> Imagem</a></td>-->
 							<td class="text-center"><a href="#" data-id="<?= $album->id; ?>" class="btn  btn-flat btn-success fa fa-camera" data-toggle="modal" data-target="#cadImage" data-name="<?=$album->name;?>"> Adicionar Fotos</a></td>
 							<td class="text-center"><a href="<?php echo site_url();?>/admin/images/photo/view/<?= $album->id; ?>" class="btn btn-flat btn-primary fa fa-eye" > Ver Fotos</a></td>
 							<td class="text-center"><a href="<?php echo site_url();?>/admin/images/photo/delete/<?= $album->id; ?>" class="btn  btn-flat btn-danger fa fa-trash-o"> Excluir Fotos</a></td>
 						</tr>
-					<?php endforeach; ?>                   
+					<?php endforeach; ?>
 	                </tbody>
 	            </table>
 	        </div><!-- /.box-body -->
@@ -57,7 +57,7 @@
                         <label for="album-id">ID</label>
                         <input type="text" class="form-control" id="album-id" name="album-id">
                     </div>
-                    <label>Escolha as fotos para o álbum:</label> 
+                    <label>Escolha as fotos para o álbum:</label>
                     <input id="uploadFile" placeholder="Escolha uma imagem" disabled="disabled" />
                     <div class="fileUpload btn btn-flat btn-primary">
                         <span>Upload</span>
@@ -68,43 +68,10 @@
                         <button type="submit" class="btn btn-flat btn-success pull-right" id="btn-editar-form">
                             <span class="fa fa-picture-o"></span> Cadastrar Fotos
                         </button>
-                    </div> 
+                    </div>
                 </form>
             </div>
 
-
-
-
-
-<!--       <div class="modal-body">
-        <form action="/admin/albums/foto/ " method="post" enctype="multipart/form-data" role="form">
-            <div class="box-body">
-				<div>
-					<div class="form-group hidden">
-			            <label for="album-id">ID</label>
-			        	<input type="text" class="form-control" id="album-id" name="album-id">
-			        </div> 
-					<?php echo $album->id; ?>
-					<label style="font-size: 22px;font-weight: bold;color: blue;">Escolha abaixo uma foto para o produto</label>
-					<input type="file" name="foto[]" multiple/>		  
-				</div>
-
-				<label></label>
-				<input type="submit" class="btn btn-danger" name="cadastrar-foto" value="Cadastrar Foto" />  	
-		  	</form>
-
-            </div>
-            <div class="box-footer">
-                <button type="button" class="btn btn-flat btn-default" data-dismiss="modal">Fechar</button>
-                <button type="submit" class="btn btn-flat btn-primary pull-right" id="btn-editar-form">
-                    <span class="fa fa-camera"></span> Inserir Imagens
-                </button>
-            </div>
-        </form>   
-      </div>
-    </div>
-  </div>
-</div> -->
 
 <div class="modal fade" id="delAlbum" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -125,7 +92,7 @@
                     <span class="fa fa-trash-o"></span> Deletar Álbum
                 </button>
             </div>
-        </form>   
+        </form>
       </div>
     </div>
   </div>

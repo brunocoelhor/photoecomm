@@ -70,47 +70,6 @@ $app->map('/area-do-cliente/logar', function() use($app,$twig)
 		$template->display($erros);
 
 	}
-
-
-/*	if($app->request()->isGet())
-    {10.99
-		$view->setTemplatesDirectory(TEMPLATE_ADMIN);
-
-		$email = $app->request()->post('email');
-		$pass  = $app->request()->post('pass');
-
-		$validation = new validation();
-		$validacoes = array(
-			'email' => 'obrigatorio|email',
-			'pass'  => 'obrigatorio'
-		);
-
-		$validar = $validation->validar($_POST,$validacoes);
-
-		if($validar){
-			$customer = new customers();
-			$customer->setCampos(array('email','password'));
-			$dadosCustomer = $customer->logar($email,hash::hash($pass));
-
-			if(count($dadosCustomer) == 1){
-				$_SESSION['user_logado'] = true;
-				$_SESSION['name'] = $dadosCustomer->name;
-
-				$categories = categories::listar();
-				$customer = customers::where('name',$_SESSION['name']);
-				$id = $customer->id;
-			    $dados = array(
-			    	'categories' => $categories,
-			    	'logado' => $_SESSION['user_logado'],
-			    	'customer'  => $customer
-				);
-
-				$app->redirect('/area-do-cliente/'.$id);
-			}else{
-				$erros = array('erro' => 'Usuário ou senha incorretos');
-			}
-		}
-	}*/
 })->via('GET','POST');
 
 $app->get('/area-do-cliente/logout', function() use($app){
@@ -120,17 +79,6 @@ $app->get('/area-do-cliente/logout', function() use($app){
 
 $app->get('/area-do-cliente/:id', function($id) use($app,$twig)
 {
-
-/*	$pessoais = \app\models\albumsCustomers::find('all',
-		array('select' => 'album_id'),
-	    array('conditions' => array('customers_id',$id)));
-
-	 foreach($pessoais as $pessoal):
-		//print_r($album->albums_id);
-		//$albums[] = \app\models\albums::where('id',$pessoal->albums_id, 'all');
-
-		$albums[] = \app\models\albums::all(array('conditions' => array('id = ?', $pessoal->albums_id)));
-	 endforeach;*/
 
 	$logado= login::banLogado('user_logado',$app);
 

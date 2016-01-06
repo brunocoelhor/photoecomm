@@ -26,43 +26,6 @@ $(document.body).on('click', '.purchased', function(event){
 	event.preventDefault();
 });
 
-/*$(document).ready(function(){
-	var btn_delete = $('.btn-delete');
-	btn_delete.on('click', function(event){
-		var id = $(this).attr('data-id');
-		$.ajax({
-			url: '/image/delete/'+id,
-			type: 'DELETE',
-			success: function(){
-				location.reload();
-			}
-		});
-		event.preventDefault();
-	});
-});
-
-
-$(document).ready(function(){
-	var container = $(".container");
-	var images = container.find('.image-cart');
-	var img_order = images.find('.image-order');
-
-	img_order.on('click', function(event){
-		var idImage = $(this).attr('data-id');
-
-		$.ajax({
-			url: '/pedido/adicionar/'+idImage,
-			type: 'GET',
-			success: function(){
-				var adicionado = $(event.currentTarget).next().html('Adicionado ao Pedido');
-				setTimeout(function(){
-					adicionado.html('');
-				},2000);
-			}
-		});
-		event.preventDefault();
-	});
-});*/
 
 $('.btn-number').click(function(e){
     e.preventDefault();
