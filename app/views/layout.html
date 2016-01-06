@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<title>{% block titulo  %} {% endblock %}</title>
+	<meta name="description" content="Look Photografia - O seu maior momento em dealhes." >
+	<meta name="author" content="Look Photografia">
+
+	<!-- Mobile Specific Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+	
+	<!-- Favicon -->
+	<link rel='shortcut icon' href='http://localhost:8888/img/favicon.png' />	
+	
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" type="text/css" href="http://localhost:8888/bower_components/bootstrap/dist/css/bootstrap.min.css">
+	
+	<!-- Animate.css  -->
+	<link rel="stylesheet" type="text/css" href="http://localhost:8888/bower_components/animate.css/animate.min.css">
+	
+	<!-- Font-Awesome  -->
+	<link rel="stylesheet" type="text/css" href="http://localhost:8888/bower_components/font-awesome/css/font-awesome.min.css">
+	
+	<!-- Custom Style  -->
+	<link rel="stylesheet" type="text/css" href="http://localhost:8888/css/style.css">
+
+	<!-- Google Fonts  -->
+	<!--<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'> -->
+
+	<!--[if lt IE 9]>
+	<script src="assets/js/html5shiv.js"></script>
+	<![endif]-->
+
+</head>
+	<body>
+		<nav class="navbar navbar-custom navbar-fixed-top">
+		  <div class="container-fluid">
+		    <!-- Brand and toggle get grouped for better mobile display -->
+		    <div class="navbar-header">
+		      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		      <a class="navbar-brand" href="/">
+				<img src="http://localhost:8888/img/look_logo70.png" alt="Look Photografia">
+		      </a>
+		    </div>
+
+		    <!-- Collect the nav links, forms, and other content for toggling -->
+		    <div class="collapse navbar-collapse pull-right" id="menu">
+		      <ul class="nav navbar-nav">
+		        <li class=""><a href="/" title="Home">Home</a></li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+						Portfolio <span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu" role="menu">
+						{% for category in categories %}
+							<li><a href="/{{category.slug}}">{{category.name}}</a></li>
+						{% endfor %}
+					</ul>
+		        </li>
+				{% if customer %}
+					<li><a href="/area-do-cliente/{{customer.id}}" title="Área do Cliente">{{customer.name}}</a>
+					</li>
+					<li><a href="/area-do-cliente/logout" class="log">Logout</a></li>
+				{% else %}
+					<li><a href="/area-do-cliente" title="Área do Cliente">Área do Cliente</a></li>
+				{% endif %}
+		        <li><a href="/contato" title="Contato">Contato</a></li>
+		      	<li class="social">
+		      		<a href="https://www.facebook.com/lookfotografia" title="Look Photografia no Facebook" class="facebook" target="_blank"></a>
+		      	</li>
+		      </ul>
+		    </div><!-- /.navbar-collapse -->
+		  </div><!-- /.container-fluid -->
+		</nav>
+		<main>
+			{% block content %} {% endblock %}
+		</main>
+
+	<script src="http://localhost:8888/bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="http://localhost:8888/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="http://localhost:8888/bower_components/isotope/dist/isotope.pkgd.min.js"></script>
+	<script src="http://localhost:8888/js/order.js"></script>
+	<script type="text/javascript">
+		// external js: isotope.pkgd.js
+
+		$( function() {
+		  // init Isotope
+		  var $container = $('#isotope-demo').isotope({
+		    itemSelector: '.element-item',
+		    layoutMode: 'masonry',
+		    masonry: {
+		      columnWidth: 5
+		    }
+		  });
+
+		  var isHorizontal = false;
+		  var $window = $( window );
+		});
+
+		$(document).ready(function(){
+		    $('.poper1').attr('title','Clique na imagem para selecionar');
+		    $('.poper1').attr('data-content','Quando selecionada a imagem ficará com uma borda verde.');
+		    $('.poper1').attr('data-placement','top');
+		    $('.poper1').popover('show');
+		    window.setTimeout(function(){
+		        $('.poper1').popover('hide');
+		    }, 6000); //600 are the ms until the timeout is called
+		    window.setTimeout(function(){
+		    	$('.poper3').attr('title','Aumentar a foto.');
+		    	$('.poper3').attr('data-content','Para aumentar a foto clique na lupa no centro da imagem.');
+		    	$('.poper3').attr('data-placement','right');		    	
+		        $('.poper3').popover('show');
+		    }, 6000); //600 are the ms until the timeout is called
+		    window.setTimeout(function(){
+		        $('.poper3').popover('hide');
+		    }, 12000); //600 are the ms until the timeout is called
+		});
+
+var url = window.location;
+// Will only work if string in href matches with location
+$('ul.nav a[href="'+ url +'"]').parent().addClass('active');
+
+// Will also work for relative and absolute hrefs
+$('ul.nav a').filter(function() {
+    return this.href == url;
+}).parent().addClass('active');
+
+
+	</script>
+	</body>
+</html>

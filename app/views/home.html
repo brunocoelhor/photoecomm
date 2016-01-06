@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block titulo %}Look Photografia - O seu maior momento em detalhes{% endblock %}
+
+{% block content %}
+
+	<div id="isotope-demo" class="isotope visible-lg">
+		{% for category in categories %}
+			<a href="/{{category.slug}}">
+				<div class="element-item {{category.config_lg}}">
+					<img class="img-responsive" src="img/category_cover/{{category.cover}}" alt="" >
+					<div class="image-description">
+						<div class="inner">
+		                	<h3>{{category.name}}</h3>
+		                </div>
+		            </div>
+				</div>
+			</a>
+		{% endfor %}
+	</div>
+
+	<div id="isotope-demo" class="isotope visible-md">
+		{% for category in categories %}
+			<a href="/{{ category.slug }}">
+				<div class="element-item {{category.config_md}}">
+					<img class="img-responsive" src="img/category_cover/{{category.cover}}" alt="" >
+					<div class="image-description">
+						<div class="inner">
+		                	<h3>{{category.name}}</h3>
+		                </div>
+		            </div>
+				</div>
+			</a>
+		{% endfor %}
+	</div>	
+
+	<div id="isotope-demo" class="isotope visible-sm visible-xs">
+		{% for category in categories %}
+			<a href="/{{ category.slug }}">
+				<div class="element-item {{category.config_sm}}">
+					<img class="img-responsive" src="img/category_cover/{{category.cover}}" alt="" >
+					<div class="image-description">
+						<div class="inner">
+		                	<h3>{{category.name}}</h3>
+		                </div>
+		            </div>
+				</div>
+			</a>
+		{% endfor %}
+	</div>
+{% endblock %}

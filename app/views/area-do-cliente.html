@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block titulo %}Look Photografia - Contato{% endblock %}
+
+{% block content %}
+	<div class="container">
+        <div class="form-box" id="login-box">
+            <div class="header bg-grey">
+            Área do Cliente
+            </div>
+            <form action="/area-do-cliente/logar" class="form" method="post" accept-charset="utf-8">
+                <div class="body">
+                    <div class="form-group">
+                        <label for="password">E-mail: </label>
+                        <input type="email" name="email" class="form-control" placeholder="E-mail"/>
+                    </div>
+                    <div class="form-group">
+                    	<label for="password">Senha: </label>
+                        <input type="password" name="pass" class="form-control" placeholder="Senha"/>
+                    </div>          
+                </div>
+                <div class="footer">                                                               
+                    <button type="submit" name="logar" class="btn btn-lg btn-block btn-album">Logar-se</button>                     
+                </div>
+            </form>
+
+            <div class="margin text-center hidden">
+                <br/>
+            </div>
+        </div>
+
+	</div>
+{% endblock %}

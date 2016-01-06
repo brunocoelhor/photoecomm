@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+
+{% block titulo %}Look Photografia - Ensaios{% endblock %}
+
+{% block content %}
+	<div class="section-title">
+		<h1 class="text-center">Ensaios</h1>
+	</div>
+	<div class="">
+		<div class="col-md-4 col-sm-6 col-xs-12 albuns">
+			<a href="#" data-toggle="modal" data-target="#myModal">
+				<img class="img-responsive pic-in" src="images/16.jpg" alt="">
+				<button class="btn btn-lg btn-block btn-album">Ensaio Fulana</button>
+			</a>
+		</div>
+		<div class="col-md-4 col-sm-6 col-xs-12 albuns">
+			<a href="#">
+				<img class="img-responsive pic-in" src="images/16.jpg" alt="">
+				<button class="btn btn-lg btn-block btn-album">Ensaio Ciclana</button>
+			</a>
+		</div>
+		<div class="col-md-4 col-sm-6 col-xs-12 albuns">
+			<a href="#">
+				<img class="img-responsive pic-in" src="images/16.jpg" alt="">
+				<button class="btn btn-lg btn-block btn-album">Ensaio XYZ</button>	
+			</a>
+		</div>
+		<div class="col-md-4 col-sm-6 col-xs-12 albuns">
+			<a href="#">
+				<img class="img-responsive pic-in" src="images/16.jpg" alt="">
+				<button class="btn btn-lg btn-block btn-album">Ensaio XPTO</button>
+			</a>
+		</div>
+		<div class="col-md-4 col-sm-6 col-xs-12 albuns">
+			<a href="#"><img class="img-responsive pic-in" src="images/16.jpg" alt="">
+			<button class="btn btn-lg btn-block btn-album">Ensaio XYZ</button>
+		</div>
+		<div class="col-md-4 col-sm-6 col-xs-12 albuns">
+			<a href="#"><img class="img-responsive pic-in" src="images/16.jpg" alt=""><button class="btn btn-lg btn-block btn-album">Ensaio ABC</button></a>
+		</div>
+		<div class="col-md-4 col-sm-6 col-xs-12 albuns">
+			<a href="#"><img class="img-responsive pic-in" src="images/16.jpg" alt=""><button class="btn btn-lg btn-block btn-album">Ensaio ABC</button></a>
+		</div>
+		<div class="col-md-4 col-sm-6 col-xs-12 albuns">
+			<a href="#"><img class="img-responsive pic-in" src="images/16.jpg" alt=""><button class="btn btn-lg btn-block btn-album">Ensaio ABC</button></a>
+		</div>
+		<div class="col-md-4 col-sm-6 col-xs-12 albuns">
+			<a href="#"><img class="img-responsive pic-in" src="images/16.jpg" alt=""><button class="btn btn-lg btn-block btn-album">Ensaio ABC</button></a>
+		</div>
+		<div class="col-md-4 col-sm-6 col-xs-12 albuns">
+			<a href="#"><img class="img-responsive pic-in" src="images/16.jpg" alt=""><button class="btn btn-lg btn-block btn-album">Ensaio ABC</button></a>
+		</div>
+		<div class="col-md-4 col-sm-6 col-xs-12 albuns">
+			<a href="#"><img class="img-responsive pic-in" src="images/16.jpg" alt=""><button class="btn btn-lg btn-block btn-album">Ensaio ABC</button></a>
+		</div>
+		<div class="col-md-4 col-sm-6 col-xs-12 albuns">
+			<a href="#"><img class="img-responsive pic-in" src="images/16.jpg" alt=""><button class="btn btn-lg btn-block btn-album">Ensaio ABC</button></a>
+		</div>
+	</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  	<div class="modal-dialog modal-sm">
+	    <div class="modal-content">
+		    <div class="modal-header">
+		        <h3 class="modal-title text-center" id="myModalLabel"> <span class="fa fa-lock" ></span> Álbum Privado</h3>
+		    </div>
+	      	<div class="modal-body">
+		        <h4>Para acessar este álbum você deve entrar com a senha de acesso.</h4>
+		        <form action="">        
+						<div class="form-group">
+			            	<label for="senha-album" class="">Senha: </label>
+			            	<input type="password" class="" id="senha-album">
+			          	</div>
+		      	</form>
+	      	</div>
+		    <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+		    	<a href="fulana.html" class="btn btn-album">Entrar</a>
+		    </div>
+	    </div>
+    </div>
+</div>
+{% endblock %}
+

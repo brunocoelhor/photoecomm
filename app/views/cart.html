@@ -1,0 +1,205 @@
+{% extends "layout.html" %}
+
+{% block titulo %}Look Photografia - Carrinho de Compras{% endblock %}
+
+{% block content %}
+	<div class="container">
+		<div class="section-title">
+			<h1 class="text-center">Carrinho de Compras</h1>
+		</div>
+
+
+
+    <div class="panel-body">
+        				<div class="table-responsive">
+        					<table class="table table-condensed">
+        						<thead>
+                        <tr>
+            							<td><strong>Item</strong></td>
+                          <td class="text-center"><strong>Código</strong></td>
+            							<td class="text-center"><strong>Preço Unitário</strong></td>
+            							<td class="text-center"><strong>Quantidade</strong></td>
+            							<td class="text-right"><strong>Total</strong></td>
+                          <td class="text-center"><strong>Remover</strong></td>
+                        </tr>
+        						</thead>
+        						<tbody>
+                      {% if images | length > 0 %}
+                        {% for image in images %}
+        							<tr>
+        								<td><img class="item-img" src="http://localhost:8888/img/photos/thumbs/{{image.name}}" alt=""></td>
+                        <td class="text-center">{{image.id}}</td>
+        								<td class="text-center price">R$<p name="quant-{{image.id}}">{{album.price}}</p></td>
+        								<td class="text-center">
+                          <div class="quant-center center-block">
+                            <div class="input-group">
+                              <span class="input-group-btn">
+                                  <button type="button" class="btn btn-danger btn-number"  data-type="minus" data-field="quant-{{image.id}}">
+                                    <span class="glyphicon glyphicon-minus"></span>
+                                  </button>
+                              </span>
+                              <input type="text" name="quant-{{image.id}}" data-field="quant-{{image.id}}" id="quant" class="form-control input-number" value="1" min="1" max="20">
+                              <span class="input-group-btn">
+                                  <button type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant-{{image.id}}">
+                                      <span class="glyphicon glyphicon-plus"></span>
+                                  </button>
+                              </span>
+                            </div>
+                          </div>
+        								</td>
+        								<td class="text-right" id="total.{{image.id}}"><span>R$<h6 name="quant-{{image.id}}">{{album.price}}</h6></span></td>
+                        <td class="text-center"><i class="fa fa-trash fa-2x"></i></td>
+                      </tr>
+                      {% endfor %}
+              		{% else %}
+              			<h4 class="text-center">Nenhum item selecionado até o momento</h4>
+              		{% endif %}
+
+        							<tr>
+        								<td class="no-line"></td>
+        								<td class="no-line"></td>
+                        <td class="no-line"></td>
+        								<td class="no-line text-center"><strong>Total</strong></td>
+        								<td class="no-line text-right"><p id="total"></p></td>
+                        <td class="no-line"></td>
+        							</tr>
+        						</tbody>
+        					</table>
+        				</div>
+        			</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <section id="cart_items">
+        <div class="table-responsive cart-info">
+          <table class="table table-condensed">
+            <thead>
+              <tr class="cart-head">
+                <td class="image">Item</td>
+                <td class="description">Código da Imagem</td>
+                <td class="price">Preço</td>
+                <td class="quantity">Quantidade</td>
+                <td class="total">Total</td>
+                <td></td>
+              </tr>
+            </thead>
+            <tbody>
+              {% if images | length > 0 %}
+                {% for image in images %}
+                  <tr>
+                    <td class="cart_product">
+                      <a href=""><img src="http://localhost:8888/img/photos/thumbs/{{image.name}}" alt=""></a>
+                    </td>
+                    <td class="cart_description">
+                      <p>{{image.id}}</p>
+                    </td>
+                    <td class="cart_price">
+                      <p>$59</p>
+                    </td>
+                    <td class="cart_quantity">
+                      <!-- <div class="cart_quantity_button">
+                        <i class="fa fa-plus-square fa-2x"></i>
+                        <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
+                        <i class="fa fa-minus-square fa-2x"></i>
+                      </div> -->
+                      <!-- <div class="input-group margin-bottom-sm cart_quantity_button">
+                        <span class="input-group-addon"><i class="fa fa-plus-square fa-2x"></i></span>
+                        <input class="cart_quantity_input form-control" type="text" name="quantity" value="1" autocomplete="off" size="2">
+                        <span class="input-group-addon"><i class="fa fa-plus-square fa-2x"></i></span>
+                      </div>
+                      <div class="quant-center">
+                        <div class="input-group">
+                          <span class="input-group-btn">
+                              <button type="button" class="btn btn-danger btn-number"  data-type="minus" data-field="quant-{{image.id}}">
+                                <span class="glyphicon glyphicon-minus"></span>
+                              </button>
+                          </span>
+                          <input type="text" name="quant-{{image.id}}" class="form-control input-number" value="1" min="1" max="20">
+                          <span class="input-group-btn">
+                              <button type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant-{{image.id}}">
+                                  <span class="glyphicon glyphicon-plus"></span>
+                              </button>
+                          </span>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="cart_total">
+                      <p class="cart_total_price">$59</p>
+                    </td>
+                    <td class="cart_delete">
+                      <i class="fa fa-trash fa-2x"></i>
+                    </td>
+                  </tr>
+                  {% endfor %}
+          		{% else %}
+          			<h4 class="text-center">Nenhum item selecionado até o momento</h4>
+          		{% endif %}
+            </tbody>
+          </table>
+        </div>
+    </section> <!--/#cart_items
+
+
+    <section id="cart_items">
+        <div class="table-responsive cart-info">
+          <table class="table table-condensed">
+            <thead>
+              <tr class="cart-head">
+                <th class="image"></th>
+                <th class="description"></th>
+                <th class="price"></th>
+                <th class="quantity"></th>
+                <th class="total">Total</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+                  <tr>
+                    <td class="cart_description">
+                      <h4>Total</h4>
+                    </td>
+                    <td class="cart_description">
+
+                    </td>
+                    <td >
+                      <p></p>
+                    </td>
+                    <td class="cart_quantity">
+                    </td>
+                    <td class="cart_total">
+                    </td>
+                    <td class="cart_total text-center">
+                      <p class="cart_total_price">$59</p>
+                    </td>
+                  </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="pull-right fechar-pedido">
+          <button type="button" name="button" class="btn btn-lg btn-flat btn-default">Continuar Comprando</button>
+          <button type="button" name="button" class="btn btn-lg btn-flat btn-success">Confirmar Pedido</button>
+        </div>
+    </section> <!--/#cart_items-->
+	</div>
+{% endblock %}

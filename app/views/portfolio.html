@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block titulo %}Look Photografia - Ensaios{% endblock %}
+
+{% block content %}
+	<div class="section-title">
+		<h1 class="text-center">Ensaios</h1>
+	</div>
+
+    {% if albums | length > 0 %}
+		{% for album in albums %}
+			<div class="">
+				<div class="col-md-4 col-sm-6 col-xs-12 albuns">
+					<a href="#" data-toggle="modal" data-target="#{{album.slug}}">
+						<img class="img-responsive pic-in" src="images/16.jpg" alt="">
+						<button class="btn btn-lg btn-block btn-album">{{album.name}}</button>
+					</a>
+				</div>
+			</div>
+
+			<div class="modal fade" id="{{album.slug}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			  	<div class="modal-dialog modal-sm">
+				    <div class="modal-content">
+					    <div class="modal-header">
+					        <h3 class="modal-title text-center" id="myModalLabel"> <span class="fa fa-lock" ></span> Álbum Privado</h3>
+					    </div>
+				      	<div class="modal-body">
+					        <h4>Para acessar este álbum você deve entrar com a senha de acesso.</h4>
+					        <form action="">        
+									<div class="form-group">
+						            	<label for="senha-album" class="">Senha: </label>
+						            	<input type="password" class="" id="senha-album">
+						          	</div>
+					      	</form>
+				      	</div>
+					    <div class="modal-footer">
+					        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+					    	<a href="/album" class="btn btn-album">Entrar</a>
+					    </div>
+				    </div>
+			    </div>
+			</div>
+	
+		{% endfor %}
+
+	{% else %}
+		Nenhum ensaio cadastrado até o momento
+	{% endif %}
+
+
+<!-- Modal -->
+
+{% endblock %}

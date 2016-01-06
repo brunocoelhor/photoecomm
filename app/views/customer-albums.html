@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block titulo %}Look Photografia - Ensaios{% endblock %}
+
+{% block content %}
+	<div class="container">
+		<div class="section-title">
+			<h1 class="text-center">{{customer.name}}</h1>
+		</div>
+	    {% if albums | length > 0 %}
+				<div class="col-md-4 col-sm-6 col-xs-12 albuns">
+					<a href="/area-do-cliente/{{customer.id}}/{{albums.slug}}">
+						<img class="img-responsive pic-in" src="http://localhost:8888/img/album_cover/{{ albums.cover }}" alt="{{ albums.name }}">
+						<button class="btn btn-lg btn-block btn-album">{{ albums.name }}</button>
+					</a>
+				</div>
+		{% else %}
+			<h4 class="text-center">Nenhum álbum cadastrado até o momento</h4>
+		{% endif %}
+	</div>
+{% endblock %}

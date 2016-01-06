@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block titulo %}Look Photografia - Ensaios{% endblock %}
+
+{% block content %}
+	<div class="container">
+		<div class="section-title">
+			<h1 class="text-center">Imagens Selecionadas</h1>
+		</div>
+
+	    {% if images | length > 0 %}
+	    	<form action="/foto" method="post">
+				{% for image in images %}
+					{{image.id}} e {{image.name}}<br />
+				{% endfor %}
+				<input type="submit" name="sub" value="Finalizar Pedido" class="btn btn-lg btn-flat btn-success btn-flutuante" >
+			</form>
+		{% else %}
+			<h4 class="text-center">Nenhuma imagem cadastrada até o momento</h4>
+		{% endif %}
+
+	</div>
+
+
+
+{% endblock %}
+

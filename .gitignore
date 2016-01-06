@@ -1,0 +1,7 @@
+vendor/*
+Front/*
+cache/
+composer.lock
+photocommerce.sql
+photocommerce2.sql
+.phpintel/
