@@ -113,7 +113,28 @@ $('.input-number').change(function() {
 	var total = $("h6[name='"+fieldName+"']");
 	var valPreco = parseInt(preco.html());
 	var currentVal = parseInt(input.val());
+	var sum = 0;
 
 	var sub = currentVal * valPreco;
 	total.html(sub);
+
+	$('.priceSub').each(function() {
+	    sum += parseFloat($(this).text());
+	});
+
+	granTotal();
 });
+
+granTotal();
+function granTotal(){
+	var sum = 0;
+	$('.priceSub').each(function() {
+	    sum += parseFloat($(this).text());
+	});
+	return $('#grandtotal').html('R$ '+ sum);
+}
+
+
+$("#imprime").click(function (){
+	$("div#myPrintArea").printArea();
+})

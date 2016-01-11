@@ -15,14 +15,14 @@ use \app\models\images;
 $app->get('/admin/customers/', function() use($app){
 	login::estaLogado('user_logado',$app);
 	$users = users::where('name',$_SESSION['name']);
-	
+
 	$view = $app->view();
 	$view->setTemplatesDirectory(TEMPLATE_ADMIN);
-	
+
 	$customers = customers::listar();
 	$albums = albums::listar();
 
-	
+
 	$dados = array(
 		'pagina' => 'customers',
 		'users' => $users,
@@ -30,12 +30,12 @@ $app->get('/admin/customers/', function() use($app){
 		'albums' => $albums
 
 	);
-	
+
 	$app->render('layout.php',$dados);
 });
 
 $app->post('/admin/customers/create/', function() use($app){
-	
+
 	$name = $app->request()->post('customer-name');
 	$pass = $app->request()->post('customer-pass');
 	$conf_pass = $app->request()->post('customer-conf-pass');
@@ -51,13 +51,13 @@ $app->post('/admin/customers/create/', function() use($app){
 
 	if($pass != $conf_pass):
 		$app->flash('erro', 'As senhas não conferem. Digite novamente.');
-		$app->redirect('/admin/customers');	
+		$app->redirect('/admin/customers');
 	else:
 		if($validar):
 			$customerExist = customers::where('email',$email);
 			if(count($customerExist) == 1):
 				$app->flash('erro', 'Cliente "' .$email. '" já está cadastrado!');
-				$app->redirect('/admin/customers');	
+				$app->redirect('/admin/customers');
 			else:
 				$attributes = array(
 					'name' => $name,
@@ -67,13 +67,13 @@ $app->post('/admin/customers/create/', function() use($app){
 				customers::cadastrar($attributes);
 				$app->flash('sucesso', 'Cliente cadastrado com sucesso !');
 				$app->redirect('/admin/customers');
-			endif;	
+			endif;
 		else:
 			$app->flash('erro', $validation->mostrarErros());
 			$app->flash('nameAlbum',$name);
-			$app->redirect('/admin/customers');	
+			$app->redirect('/admin/customers');
 		endif;
-	endif;	
+	endif;
 });
 
 $app->post('/admin/customers/delete/:id', function($id) use($app){
@@ -102,7 +102,7 @@ $app->post('/admin/customers/edit/:id', function() use($app){
 
 	if($pass != $conf_pass):
 		$app->flash('erro', 'As senhas não conferem. Digite novamente.');
-		$app->redirect('/admin/customers');	
+		$app->redirect('/admin/customers');
 	else:
 		if($validar):
 			$attributes = array(

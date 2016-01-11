@@ -1,0 +1,104 @@
+{% extends "layout.html" %}
+
+{% block titulo %}Look Photografia - Relatório de Pedido{% endblock %}
+
+{% block content %}
+	<div class="container" id="myPrintArea">
+		<div class="section-title">
+			<h1 class="text-center">Relatório de Pedido</h1>
+		</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+    		<div class="invoice-title">
+    			<h2>Relatório</h2><h3 class="pull-right">Código do Pedido # {{order.id}}</h3>
+    		</div>
+    		<hr>
+    		<div class="row">
+    			<div class="col-xs-6">
+    				<address>
+    				<strong>Cliente:</strong><br>
+    					{{customer.name}}<br>
+    					<br>
+    					<br>
+
+    				</address>
+    			</div>
+    			<div class="col-xs-6 text-right">
+    				<address>
+        			<strong>Responsável:</strong><br>
+    					Photo Commerce<br>
+    					Rua XYZ, 765<br>
+    					97541-000<br>
+    					Alegrete, RS
+    				</address>
+    			</div>
+    		</div>
+    		<div class="row">
+    			<div class="col-xs-6">
+    				<address>
+    					<strong></strong><br>
+    					<br>
+
+    				</address>
+    			</div>
+    			<div class="col-xs-6 text-right">
+    				<address>
+    					<strong>Data do Pedido</strong><br>
+    					{{order.date | date("d/m/Y")}}<br><br>
+    				</address>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+
+    <div class="row">
+    	<div class="col-md-12">
+    		<div class="panel panel-default">
+    			<div class="panel-heading">
+    				<h3 class="panel-title"><strong>Itens do Pedido</strong></h3>
+    			</div>
+    			<div class="panel-body">
+    				<div class="table-responsive">
+    					<table class="table table-condensed">
+    						<thead>
+                    <tr>
+        							<td><strong>Item</strong></td>
+        							<td class="text-center"><strong>Preço</strong></td>
+        							<td class="text-center"><strong>Quantidade</strong></td>
+        							<td class="text-right"><strong>Total</strong></td>
+                    </tr>
+    						</thead>
+    						<tbody>
+                  {% if items_order | length > 0 %}
+                    {% for item_order in items_order %}
+                  	  <tr>
+                  		  <td>{{item_order.image_id}}</td>
+                  		  <td class="text-center">{{album.price}}</td>
+                  		  <td class="text-center">{{item_order.amount}}</td>
+                  		  <td class="text-right">{{item_order.total}}</td>
+                  	  </tr>
+                    {% endfor %}
+                  {% else %}
+                    <h4 class="text-center">Nenhum item selecionado até o momento</h4>
+                  {% endif %}
+    							<tr>
+    								<td class="no-linee"></td>
+    								<td class="no-linee"></td>
+    								<td class="no-linee text-center"><strong>Total</strong></td>
+    								<td class="no-linee text-right">{{ granTotal }}</td>
+    							</tr>
+    						</tbody>
+    					</table>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+		<div class="pull-right fechar-pedido">
+			<button href="/cancel-order" class="btn btn-lg btn-flat btn-default" onclick="print();">Continuar Comprando</button>
+			<button type="" id="imprime" class="btn btn-lg btn-flat btn-success .confirm-order">Imprimir</button>
+		</div>
+</div>
+{% endblock %}
