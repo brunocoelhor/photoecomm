@@ -10,6 +10,7 @@ use \app\models\categories;
 use \app\models\customers;
 use \app\models\albums;
 use \app\models\images;
+use \app\models\albumsCustomers;
 
 
 $app->get('/admin/customers/', function() use($app){
@@ -121,4 +122,49 @@ $app->post('/admin/customers/edit/:id', function() use($app){
 		endif;
 	endif;
 
+});
+
+
+$app->get('/admin/customers/albums_manage/:id', function($id) use($app){
+	login::estaLogado('user_logado',$app);
+	$users = users::where('name',$_SESSION['name']);
+
+	$view = $app->view();
+	$view->setTemplatesDirectory(TEMPLATE_ADMIN);
+	$customer = customers::where('id',$id);
+
+	$albums = albums::find('all', array('order' => 'name asc'));
+
+	$albumsCustomers = albumsCustomers::where('customers_id',$id,'all');
+
+	//print_r($albumsCustomers);
+
+
+	//$manages = albums::where('id',$albumsCustomers->albums_id, 'all');
+
+	//$manages = albums::where('id',$albumsCustomers->albums_id, 'all');
+	//print_r($manages);
+
+ $join = "JOIN albums_customers a ON(albums.id = a.albums_id) WHERE customers_id = $id";
+ $manages = albums::all(array('joins' => $join));
+ # sql => SELECT `books`.* FROM `books`
+ #      LEFT JOIN authors a ON(books.author_id = a.author_id)
+
+ // SELECT *
+ // FROM  `albums`
+ // JOIN albums_customers a ON ( albums.id = a.albums_id )
+ // WHERE customers_id = 3
+
+ //print_r($albumss);
+
+	$dados = array(
+		'pagina' => 'albums_customer',
+		'albums' => $albums,
+		'customer' => $customer,
+		'users'   => $users,
+		'albumsCustomers' => $albumsCustomers,
+		'manages' => $manages
+	);
+
+	$app->render('layout.php',$dados);
 });

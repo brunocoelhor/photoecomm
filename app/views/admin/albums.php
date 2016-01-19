@@ -26,7 +26,6 @@
 	                <thead>
 	                    <tr>
 							<th>Nome</th>
-							<!-- <th class="">Categoria</th> -->
 							<th class="text-center">Editar</th>
 							<th class="text-center">Deletar</th>
 							<th class="text-center">Capa</th>
@@ -36,14 +35,11 @@
 	                <?php foreach($albums as $album):?>
 						<tr>
 							<td><?= $album->name; ?></td>
-							<!-- <td class=""><?= $album->category_id; ?></td> 
-							<td><a href="<?php echo site_url();?>/admin/configurar/album/foto/<?php echo $album->id;  ?>" class="btn btn-flat btn-info glyphicon glyphicon-picture"> Imagem</a></td>-->
 							<td class="text-center"><a href="#" data-id="<?= $album->id; ?>" class="btn btn-flat btn-warning fa fa-edit" data-toggle="modal" data-target="#editAlbum" data-name="<?=$album->name;?>" data-slug="<?php echo $album->slug; ?>" data-price="<?php echo $album->price; ?>" data-category="<?php echo $album->category_id; ?>">Editar</a></td>
 							<td class="text-center"><a href="#" data-id="<?= $album->id; ?>" class="btn  btn-flat btn-danger fa fa-trash-o" data-toggle="modal" data-target="#delAlbum" data-name="<?=$album->name;?>"> Excluir</a></td>
-							<!-- <td class="text-center"><a href="#" data-id="<?= $album->id; ?>" class="btn  btn-flat btn-primary fa fa-camera" data-toggle="modal" data-target="#cadImage" data-name="<?=$album->name;?>"> Fotos</a></td> -->
-							<td class="text-center"><a href="#" data-id="<?php echo $album->id; ?>" class="btn  btn-flat btn-primary fa fa-picture-o" data-toggle="modal" data-target="#editAlbumCover" data-name="<?=$album->name;?>" data-cover="<?=$album->cover;?>"> Imagem da Capa</a></td>							
+							<td class="text-center"><a href="#" data-id="<?php echo $album->id; ?>" class="btn  btn-flat btn-primary fa fa-picture-o" data-toggle="modal" data-target="#editAlbumCover" data-name="<?=$album->name;?>" data-cover="<?=$album->cover;?>"> Gerenciar Capa</a></td>
 						</tr>
-					<?php endforeach; ?>                   
+					<?php endforeach; ?>
 	                </tbody>
 	            </table>
 	        </div><!-- /.box-body -->
@@ -69,20 +65,28 @@
 		                    </div>
 		                    <div class="form-group">
 		                        <label for="category">Categoria Relacionada</label>
-								<select class="form-control" name="album-category" id="album-category">
-								<?php foreach($categories as $category): ?>
-									<option value="<?php echo $category->id; ?>"><?php echo $category->name; ?></option>
-								<?php endforeach; ?>
-								</select> 
+														<select class="form-control" name="album-category" id="album-category">
+														<?php foreach($categories as $category): ?>
+															<option value="<?php echo $category->id; ?>"><?php echo $category->name; ?></option>
+														<?php endforeach; ?>
+														</select>
 		                    </div>
 		                    <!-- <div class="form-group">
 		                        <label for="album-password">Senha</label>
 		                        <input type="password" class="form-control" id="album-password" name="album-password" placeholder="Senha para acessar o Álbum"/>
 		                    </div> -->
+												<div class="form-group">
+		                        <label for="usuario">Usuário Relacionada</label>
+														<select class="form-control" name="album-user" id="album-user">
+														<?php foreach($customers as $customer): ?>
+															<option value="<?php echo $customer->id; ?>"><?php echo $customer->name; ?></option>
+														<?php endforeach; ?>
+														</select>
+		                    </div>
 		                    <div class="form-group">
 		                        <label for="album-price">Preço</label>
 		                        <input type="number" class="form-control" id="album-price" name="album-price" placeholder="Preço das Fotos"/>
-		                    </div>                                   
+		                    </div>
 		                </div><!-- /.box-body -->
 		                <div class="box-footer">
 		                	<button type="button" class="btn btn-flat btn-default" data-dismiss="modal">Fechar</button>
@@ -117,7 +121,7 @@
 							<?php foreach($categories as $category): ?>
 								<option value="<?php echo $category->id; ?>"><?php echo $category->name; ?></option>
 							<?php endforeach; ?>
-							</select> 
+							</select>
 			            </div>
 			            <!-- <div class="form-group">
 			                <label for="album-password">Senha</label>
@@ -126,15 +130,15 @@
 			            <div class="form-group">
 			                <label for="album-price">Preço</label>
 			                <input type="number" class="form-control" id="album-price" name="album-price" placeholder="Preço das Fotos"/>
-			            </div> 
+			            </div>
 			            <div class="form-group hidden">
 			                <label for="album-id">ID</label>
 			                <input type="text" class="form-control" id="album-id" name="album-id">
-			            </div> 
+			            </div>
 			            <div class="form-group">
 			                <label for="album-slug">Slug do Álbum</label>
 			                <input type="text" class="form-control" id="album-slug" name="album-slug" value="<?php echo $category->slug ?>" />
-			            </div>                                       
+			            </div>
 			        </div><!-- .box-body -->
 			        <div class="box-footer">
 			        	<button type="button" class="btn btn-flat btn-default" data-dismiss="modal">Fechar</button>
@@ -142,7 +146,7 @@
 							<span class="fa fa-edit"></span> Editar Álbum
 						</button>
 					</div>
-			    </form>   
+			    </form>
 		  	</div>
 		</div>
 	</div>
@@ -167,7 +171,7 @@
                     <span class="fa fa-trash-o"></span> Deletar Álbum
                 </button>
             </div>
-        </form>   
+        </form>
       </div>
     </div>
   </div>
@@ -189,7 +193,7 @@
                     <div class="form-group hidden">
                         <label for="album-id">ID</label>
                         <input type="text" class="form-control" id="album-id" name="album-id">
-                    </div> 
+                    </div>
                     <input id="uploadFile" placeholder="Escolha uma imagem" disabled="disabled" />
                     <div class="fileUpload btn btn-primary">
                         <span>Upload</span>
@@ -200,7 +204,7 @@
                         <button type="submit" class="btn btn-flat btn-primary pull-right" id="btn-editar-form">
                             <span class="fa fa-picture-o"></span> Cadastrar Imagem
                         </button>
-                    </div> 
+                    </div>
                 </form>
             </div>
         </div>

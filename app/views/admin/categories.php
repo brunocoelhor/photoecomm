@@ -38,9 +38,9 @@
 							<td class="hidden"></td>
 							<td class="text-center"><a href="#" data-id="<?php echo $category->id; ?>" class="btn btn-flat btn-warning fa fa-edit" data-toggle="modal" data-target="#editCategory" data-name="<?=$category->name;?>" data-slug="<?= $category->slug; ?>">Editar</a></td>
 							<td class="text-center"><a href="#" data-id="<?php echo $category->id; ?>" class="btn  btn-flat btn-danger fa fa-trash-o" data-toggle="modal" data-target="#delCategory" data-name="<?=$category->name;?>"> Excluir</a></td>
-                            <td class="text-center"><a href="#" data-id="<?php echo $category->id; ?>" class="btn  btn-flat btn-primary fa fa-picture-o" data-toggle="modal" data-target="#editCategoryCover" data-name="<?=$category->name;?>" data-cover="<?=$category->cover;?>"> Imagem da Capa</a></td>
+                            <td class="text-center"><a href="#" data-id="<?php echo $category->id; ?>" class="btn  btn-flat btn-primary fa fa-picture-o" data-toggle="modal" data-target="#editCategoryCover" data-name="<?=$category->name;?>" data-cover="<?=$category->cover;?>"> Gerenciar Capa</a></td>
 						</tr>
-					<?php endforeach; ?>                   
+					<?php endforeach; ?>
 	                </tbody>
 	            </table>
 	        </div><!-- /.box-body -->
@@ -61,7 +61,7 @@
                         <div class="form-group">
                             <label for="category-name">Nome da Categoria</label>
                             <input type="text" class="form-control" id="category-name" name="category-name" placeholder="Nome da Categoria"/>
-                        </div>                               
+                        </div>
                     </div><!-- /.box-body -->
                     <div class="box-footer">
                     	<button type="button" class="btn btn-flat btn-default" data-dismiss="modal">Fechar</button>
@@ -93,11 +93,11 @@
                 <div class="form-group hidden">
                     <label for="category-id">ID</label>
                     <input type="text" class="form-control" id="category-id" name="category-id">
-                </div> 
+                </div>
                 <div class="form-group">
                     <label for="category-slug">Slug da Categoria</label>
                     <input type="text" class="form-control" id="category-slug" name="category-slug" value="<?php echo $category->slug ?>" />
-                </div>                                       
+                </div>
             </div><!-- .box-body -->
             <div class="box-footer">
             	<button type="button" class="btn btn-flat btn-default" data-dismiss="modal">Fechar</button>
@@ -105,7 +105,7 @@
     				<span class="fa fa-edit"></span> Editar Categoria
 				</button>
 			</div>
-        </form>   
+        </form>
       </div>
     </div>
   </div>
@@ -121,7 +121,7 @@
       <div class="modal-body">
         <form action="" method="post" enctype="multipart/form-data" role="form">
             <div class="box-body">
-                <p>Por medida de segurança para deletar uma categoria não poderá haver nenhum álbum cadastrado.</p>                                      
+                <p>Por medida de segurança para deletar uma categoria não poderá haver nenhum álbum cadastrado.</p>
             </div><!-- .box-body -->
             <div class="box-footer">
                 <button type="button" class="btn btn-flat btn-default" data-dismiss="modal">Fechar</button>
@@ -129,7 +129,7 @@
                     <span class="fa fa-trash-o"></span> Deletar Categoria
                 </button>
             </div>
-        </form>   
+        </form>
       </div>
     </div>
   </div>
@@ -151,7 +151,7 @@
                     <div class="form-group hidden">
                         <label for="category-id">ID</label>
                         <input type="text" class="form-control" id="category-id" name="category-id">
-                    </div> 
+                    </div>
                     <input id="uploadFile" placeholder="Escolha uma imagem" disabled="disabled" />
                     <div class="fileUpload btn btn-primary">
                         <span>Upload</span>
@@ -162,7 +162,7 @@
                         <button type="submit" class="btn btn-flat btn-primary pull-right" id="btn-editar-form">
                             <span class="fa fa-picture-o"></span> Cadastrar Imagem
                         </button>
-                    </div> 
+                    </div>
                 </form>
             </div>
         </div>

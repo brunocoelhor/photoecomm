@@ -18,6 +18,7 @@ require ROOT.'app/routes/admin/albums.php';
 require ROOT.'app/routes/admin/categories.php';
 require ROOT.'app/routes/admin/images.php';
 require ROOT.'app/routes/admin/customers.php';
+require ROOT.'app/routes/admin/orders.php';
 require ROOT.'app/routes/customer.php';
 require ROOT.'app/routes/site.php';
 

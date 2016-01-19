@@ -5,6 +5,7 @@ use \app\classes\cover;
 use \app\classes\slug;
 use \app\classes\validation;
 use \app\models\users;
+use \app\models\customers;
 use \app\models\categories;
 use \app\models\albums;
 use \app\models\images;
@@ -12,25 +13,27 @@ use \app\models\images;
 $app->get('/admin/albums/', function() use($app){
 	login::estaLogado('user_logado',$app);
 	$users = users::where('name',$_SESSION['name']);
-	
+
 	$view = $app->view();
 	$view->setTemplatesDirectory(TEMPLATE_ADMIN);
-	
+
 	$categories = categories::listar();
+	$customers = customers::find('all', array('order' => 'name asc'));
 	$albums = albums::find('all', array('order' => 'name asc'));
-	
+
 	$dados = array(
 		'pagina' => 'albums',
 		'users' => $users,
 		'categories' => $categories,
+		'customers' => $customers,
 		'albums' => $albums
 	);
-	
+
 	$app->render('layout.php',$dados);
 });
 
 $app->post('/admin/albums/create/', function() use($app){
-	
+
 	$name = $app->request()->post('album-name');
 	$category = $app->request()->post('album-category');
 	//$pass = $app->request()->post('album-password');
@@ -51,7 +54,7 @@ $app->post('/admin/albums/create/', function() use($app){
 		$albumExist = albums::where('name',$name);
 		if(count($albumExist) == 1):
 			$app->flash('erro', 'Álbum "' .$name. '" já está cadastrada!');
-			$app->redirect('/admin/albums');	
+			$app->redirect('/admin/albums');
 		else:
 			$attributes = array(
 				'name' => $name,
@@ -63,12 +66,12 @@ $app->post('/admin/albums/create/', function() use($app){
 			albums::cadastrar($attributes);
 			$app->flash('sucesso', 'Álbum cadastrada com sucesso !');
 			$app->redirect('/admin/albums');
-		endif;	
+		endif;
 	else:
 		$app->flash('erro', $validation->mostrarErros());
 		$app->flash('nameAlbum',$name);
-		$app->redirect('/admin/albums');	
-	endif;	
+		$app->redirect('/admin/albums');
+	endif;
 });
 
 
@@ -82,7 +85,7 @@ $app->post('/admin/albums/edit/:id', function() use($app){
 
 	if(empty($name) || empty($slug)){
 		$app->flash('erro', 'Nome ou Slug não podem ser vazios');
-		$app->redirect('/admin/albums');			
+		$app->redirect('/admin/albums');
 	}else{
 		$attributes = [
 			'name' => $name,
@@ -95,7 +98,7 @@ $app->post('/admin/albums/edit/:id', function() use($app){
 		$album = new albums();
 		$album->atualizar($id,$attributes);
 		$app->flash('sucesso', 'Categoria alterada com sucesso !');
-		$app->redirect('/admin/albums');		
+		$app->redirect('/admin/albums');
 	}
 });
 
@@ -120,12 +123,12 @@ $app->post('/admin/albums/delete/:id', function($id) use($app){
 $app->post('/admin/albums/cover/:id', function() use($app){
 	$id   = $app->request()->post('album-id');
 
-	
+
 	$foto = $_FILES['foto']['name'];
 	$temp_foto = $_FILES['foto']['tmp_name'];
-	
+
 	$extensoes_permitidas = array('jpg','jpeg', 'png');
-	
+
 	if(empty($foto)):
 		$app->flash('mensagem', '<div class="alert alert-danger">Escolha uma foto.</div>');
 		$app->redirect('/admin/albums');
@@ -138,35 +141,35 @@ $app->post('/admin/albums/cover/:id', function() use($app){
 				$cover = new cover();
 				$novoNome = $cover->renomear($foto);
 				$cover->upload($wide, 'img/album_cover', 500,500);
-				
+
 				$attributes = array('cover' => $novoNome);
-				
+
 				albums::atualizar($id,$attributes);
-				
+
 				$app->flash('mensagem', '<div class="alert alert-success">Foto Cadastrada.</div>');
 				$app->redirect('/admin/albums');
 			else:
-				
-				
+
+
 				cover::deletar($coverAdd->cover);
-				
-				
+
+
 				$wide = \WideImage\WideImage::load($temp_foto);
 				$cover = new cover();
 				$novoNome = $cover->renomear($foto);
 				$cover->upload($wide, 'img/album_cover', 500,500);
 
 				$attributes = array('cover' => $novoNome);
-				
+
 				albums::atualizar($id,$attributes);
-				
+
 				$app->flash('mensagem', '<div class="alert alert-success">Foto Cadastrada.</div>');
 				$app->redirect('/admin/albums');
-							
+
 			endif;
 		else:
 			$app->flash('mensagem', '<div class="alert alert-danger">Escolha uma foto com a extensão permitida.</div>');
-			$app->redirect('/admin/albums');			
+			$app->redirect('/admin/albums');
 		endif;
 	endif;
 });

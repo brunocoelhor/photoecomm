@@ -20,24 +20,21 @@
 	            <table id="example1" class="table table-striped">
 	                <thead>
 	                    <tr>
-							<th>Nome</th>
-							<!-- <th class="">Categoria</th> -->
-							<th class="text-center">Adicionar</th>
-							<th class="text-center">Ver</th>
-							<th class="text-center">Excluir</th>
+												<th>Nome</th>
+												<th class="text-center">Adicionar</th>
+												<th class="text-center">Excluir</th>
+												<th class="text-center">Acesso</th>
 	                    </tr>
 	                </thead>
 	                <tbody>
 	                <?php foreach($albums as $album):?>
-						<tr>
-							<td><?= $album->name; ?></td>
-							<!-- <td class=""><?= $album->category_id; ?></td>
-							<td><a href="<?php echo site_url();?>/admin/configurar/album/foto/<?php echo $album->id;  ?>" class="btn btn-flat btn-info glyphicon glyphicon-picture"> Imagem</a></td>-->
-							<td class="text-center"><a href="#" data-id="<?= $album->id; ?>" class="btn  btn-flat btn-success fa fa-camera" data-toggle="modal" data-target="#cadImage" data-name="<?=$album->name;?>"> Adicionar Fotos</a></td>
-							<td class="text-center"><a href="<?php echo site_url();?>/admin/images/photo/view/<?= $album->id; ?>" class="btn btn-flat btn-primary fa fa-eye" > Ver Fotos</a></td>
-							<td class="text-center"><a href="<?php echo site_url();?>/admin/images/photo/delete/<?= $album->id; ?>" class="btn  btn-flat btn-danger fa fa-trash-o"> Excluir Fotos</a></td>
-						</tr>
-					<?php endforeach; ?>
+										<tr>
+											<td><?= $album->name; ?></td>
+											<td class="text-center"><a href="#" data-id="<?= $album->id; ?>" class="btn  btn-flat btn-success fa fa-camera" data-toggle="modal" data-target="#cadImage" data-name="<?=$album->name;?>"> Adicionar Fotos</a></td>
+											<td class="text-center"><a href="<?php echo site_url();?>/admin/images/photo/delete/<?= $album->id; ?>" class="btn  btn-flat btn-danger fa fa-trash-o"> Excluir Fotos</a></td>
+											<td class="text-center"><a href="<?php echo site_url();?>/admin/images/photo/view/<?= $album->id; ?>" class="btn btn-flat btn-primary fa fa-book" > Gerenciar Acesso</a></td>
+										</tr>
+									<?php endforeach; ?>
 	                </tbody>
 	            </table>
 	        </div><!-- /.box-body -->

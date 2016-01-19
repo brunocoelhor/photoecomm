@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>AdminLTE | Dashboard</title>
+        <title>Photo Commerce</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
         <!-- Favicon -->
@@ -10,7 +10,7 @@
         <!-- Bootstrap -->
         <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" />
         <!-- Font Awesome -->
-        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
         <!-- DataTables style -->
         <link href="/css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
         <!-- Theme style -->
@@ -97,23 +97,29 @@
                                 <i class="fa fa-th"></i>
                                 <span>Categorias</span>
                             </a>
-                        </li>                        
+                        </li>
                         <li>
                             <a href="<?php echo site_url();?>/admin/albums">
-                                <i class="fa fa-book"></i> 
+                                <i class="fa fa-book"></i>
                                 <span>Álbuns</span>
                             </a>
                         </li>
                         <li>
                             <a href="<?php echo site_url();?>/admin/images">
-                                <i class="fa fa-picture-o"></i> 
+                                <i class="fa fa-picture-o"></i>
                                 <span>Imagens</span>
                             </a>
                         </li>
                         <li>
                             <a href="<?php echo site_url();?>/admin/customers">
-                                <i class="fa fa-users"></i> 
+                                <i class="fa fa-users"></i>
                                 <span>Clientes</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?php echo site_url();?>/admin/orders">
+                                <i class="fa fa-line-chart"></i>
+                                <span>Pedidos</span>
                             </a>
                         </li>
                     </ul>
@@ -164,7 +170,7 @@
                 modal.find('.modal-body #album-name').val(name)
                 modal.find('.modal-body #album-id').val(id)
                 modal.find('.modal-body form').attr('action','/admin/categories/delete/'+id)
-            });     
+            });
 
             $('#editAlbum').on('show.bs.modal', function (event) {
                 var a = $(event.relatedTarget) // Button that triggered the modal
@@ -200,7 +206,7 @@
                 var name = a.data('name'); // Extract info from data-* attributes
                 var id = a.data('id');
                 var cover = a.data('cover');
-                
+
                 // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
                 // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
                 var modal = $(this)
@@ -216,7 +222,7 @@
                     $('.modal-body img').remove();
                     modal.find('.modal-body .current-cover').append('<img class="img-responsive cover-form" src="" />');
                     modal.find('.modal-body img').attr('src','/img/category_cover/' + cover);
-                }                
+                }
             });
 
             $('#editAlbumCover').on('show.bs.modal', function (event) {
@@ -224,7 +230,7 @@
                 var name = a.data('name'); // Extract info from data-* attributes
                 var id = a.data('id');
                 var cover = a.data('cover');
-                
+
                 // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
                 // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
                 var modal = $(this)
@@ -240,7 +246,7 @@
                     $('.modal-body img').remove();
                     modal.find('.modal-body .current-cover').append('<img class="img-responsive cover-form" src="" />');
                     modal.find('.modal-body img').attr('src','/img/album_cover/' + cover);
-                }                
+                }
             });
 
             $('#cadImage').on('show.bs.modal', function (event) {
@@ -284,18 +290,18 @@
                 modal.find('.modal-body #customer-name').val(name)
                 modal.find('.modal-body #customer-id').val(id)
                 modal.find('.modal-body form').attr('action','/admin/customers/delete/'+id)
-            }); 
+            });
 
 
             $(function() {
                 $("#example1").dataTable();
                 $('#example2').dataTable({
                     "bPaginate": true,
-                    "bLengthChange": false,
-                    "bFilter": false,
-                    "bSort": true,
+                    "bLengthChange": true,
+                    "bFilter": true,
+                    "bSort": false,
                     "bInfo": true,
-                    "bAutoWidth": false
+                    "bAutoWidth": true
                 });
             });
 
@@ -306,4 +312,3 @@
         </script>
     </body>
 </html>
-

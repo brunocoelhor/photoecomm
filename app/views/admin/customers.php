@@ -36,11 +36,11 @@
 						<tr>
 							<td><?php echo $customer->name; ?></td>
 							<td class="hidden"></td>
-							<td class="text-center"><a href="#" data-id="<?php echo $customer->id; ?>" class="btn btn-flat btn-warning fa fa-edit" data-toggle="modal" data-target="#editCustomer" data-name="<?=$customer->name;?>" data-email="<?= $customer->email; ?>" data-pass="<?= $customer->password; ?>">Editar</a></td>
-							<td class="text-center"><a href="#" data-id="<?php echo $customer->id; ?>" class="btn  btn-flat btn-danger fa fa-trash-o" data-toggle="modal" data-target="#delCustomer" data-name="<?=$customer->name;?>"> Excluir</a></td>
-                            <td class="text-center"><a href="#" data-id="<?php echo $customer->id; ?>" class="btn  btn-flat btn-primary fa fa-book" data-toggle="modal" data-target="#manAlbums" data-name="<?=$customer->name;?>"> Gerenciar Álbuns</a></td>
+							<td class="text-center"><a href="#" data-id="<?= $customer->id; ?>" class="btn btn-flat btn-warning fa fa-edit" data-toggle="modal" data-target="#editCustomer" data-name="<?=$customer->name;?>" data-email="<?= $customer->email; ?>" data-pass="<?= $customer->password; ?>">Editar</a></td>
+							<td class="text-center"><a href="#" data-id="<?= $customer->id; ?>" class="btn  btn-flat btn-danger fa fa-trash-o" data-toggle="modal" data-target="#delCustomer" data-name="<?=$customer->name;?>"> Excluir</a></td>
+              <td class="text-center"><a href="<?php echo site_url();?>/admin/customers/albums_manage/<?= $customer->id; ?>" class="btn  btn-flat btn-primary fa fa-book"> Gerenciar Álbuns</a></td>
 						</tr>
-					<?php endforeach; ?>                   
+					<?php endforeach; ?>
 	                </tbody>
 	            </table>
 	        </div><!-- /.box-body -->
@@ -103,7 +103,7 @@
                         <div class="form-group hidden">
                             <label for="customer-id">ID</label>
                             <input type="text" class="form-control" id="customer-id" name="customer-id">
-                        </div>                     
+                        </div>
                         <div class="form-group col-lg-6">
                             <label for="name-customer">Nome do Cliente</label>
                             <input type="text" class="form-control" name="customer-name" id="customer-name" placeholder="Nome do Cliente" value="<?php echo isset($flash['nomeUsuario']) ? $flash['nomeUsuario'] : '';?>"/>
@@ -129,7 +129,7 @@
                             <span class="fa fa-edit"></span> Editar Cliente
                         </button>
                     </div>
-                </form> 
+                </form>
             </div>
         </div>
     </div>
@@ -145,7 +145,7 @@
       <div class="modal-body">
         <form action="" method="post" enctype="multipart/form-data" role="form">
             <div class="box-body">
-                <p>Tem certeza que deseja deletar o cadastro do cliente?</p>                                      
+                <p>Tem certeza que deseja deletar o cadastro do cliente?</p>
             </div><!-- .box-body -->
             <div class="box-footer">
                 <button type="button" class="btn btn-flat btn-default" data-dismiss="modal">Fechar</button>
@@ -153,9 +153,8 @@
                     <span class="fa fa-trash-o"></span> Deletar Cliente
                 </button>
             </div>
-        </form>   
+        </form>
       </div>
     </div>
   </div>
 </div>
-
