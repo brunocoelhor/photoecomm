@@ -10,7 +10,7 @@
 	    {% if images | length > 0 %}
 				{% for image in images %}
 					<div class="col-md-3 col-sm-6 col-xs-12 bottom-content image-cart">
-						<img class="img-responsive" src="http://localhost:8888/img/photos/thumbs/{{image.name}}" alt="" />
+						<img class="img-responsive" src="{{ site_url()}}/img/photos/thumbs/{{image.name}}" alt="" />
 						<div class="pro-grid image-order" data-id="{{image.id}}">
 							<div class="pro-btns">
 								<a class="detail btn-album fa fa-search-plus fa-3x" href="#" data-toggle="modal" data-target="#myModal-{{image.id}}">
@@ -24,7 +24,7 @@
 					  	<div class="modal-dialog">
 						    <div class="modal-content">
 						      	<div class="modal-body">
-									<img class="img-responsive" src="http://localhost:8888/img/photos/{{image.name}}" alt="" >
+									<img class="img-responsive" src="{{ site_url()}}/img/photos/{{image.name}}" alt="" >
 						      	</div>
 						    </div>
 					    </div>
@@ -35,4 +35,3 @@
 		{% endif %}
 	</div>
 {% endblock %}
-

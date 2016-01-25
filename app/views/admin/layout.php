@@ -6,7 +6,7 @@
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
         <!-- Favicon -->
-        <link rel='shortcut icon' href='http://localhost:8888/img/favicon.png' />
+        <link rel='shortcut icon' href='/img/favicon.png' />
         <!-- Bootstrap -->
         <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" />
         <!-- Font Awesome -->
@@ -26,7 +26,7 @@
     <body class="skin-orange">
         <!-- header logo: style can be found in header.less -->
         <header class="header">
-            <a href="<?php echo site_url();?>/painel" class="logo">
+            <a href="/painel" class="logo">
                 <!-- Add the class icon to your logo image or logo icon to add the margining -->
                 <img src="/img/logo.png" alt="Look Photografia">
             </a>
@@ -50,7 +50,7 @@
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header bg-black">
-                                    <img src="http://localhost:8888/img/users/<?php echo $users->photo; ?>" class="img-circle" alt="User Image" />
+                                    <img src="/img/users/<?php echo $users->photo; ?>" class="img-circle" alt="User Image" />
                                     <p><?php echo $users->name; ?></p>
                                 </li>
                                 <!-- Menu Footer-->
@@ -76,7 +76,7 @@
                     <!-- Sidebar user panel -->
                     <div class="user-panel">
                         <div class="vert-align text-center image">
-                            <img src="http://localhost:8888/img/users/<?php echo $users->photo; ?>" class="img-circle" alt="User Image" />
+                            <img src="/img/users/<?php echo $users->photo; ?>" class="img-circle" alt="User Image" />
                         </div>
                         <div class="vert-align text-center info">
                             <p>Olá, <?php echo $users->name; ?></p>

@@ -11,7 +11,7 @@
 				{% for image in images %}
 					<div class="col-md-3 col-sm-6 col-xs-12 bottom-content">
 						<a href="#" data-toggle="modal" data-target="#{{image.id}}">
-							<img class="img-responsive" src="http://localhost:8888/img/photos/thumbs/{{image.name}}" alt="" >
+							<img class="img-responsive" src="{{ site_url()}}/img/photos/thumbs/{{image.name}}" alt="" >
 						</a>
 						<button class="btn btn-lg btn-block btn-flat {% if image.purchased == 0 %}btn-success buy{% else %} btn-danger purchased{% endif %}" data-id="{{ image.id }}" id="buy_{{image.id}}">{% if image.purchased == 0 %}Selecionar{% else %}Selecionado{% endif %}</button>
 					</div>
@@ -21,7 +21,7 @@
 					  	<div class="modal-dialog">
 						    <div class="modal-content">
 						      	<div class="modal-body">
-									<img class="img-responsive" src="http://localhost:8888/img/photos/{{image.name}}" alt="" >
+									<img class="img-responsive" src="{{ site_url()}}/img/photos/{{image.name}}" alt="" >
 						      	</div>
 						    </div>
 					    </div>

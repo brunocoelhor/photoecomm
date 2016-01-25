@@ -12,10 +12,10 @@
 	    	<form action="/foto" method="post">
 				{% for image in images %}
 					<div class="col-md-3 col-sm-6 col-xs-12 bottom-content image-cart">
-						<div class="poper{{ loop.index }}" data-toggle="popover" data-placement="" title="" data-content=""></div>					
+						<div class="poper{{ loop.index }}" data-toggle="popover" data-placement="" title="" data-content=""></div>
 						<input type="checkbox" id="{{image.id}}" name="check[]" value="{{image.id}}" class="graphic" />
 						<label for="{{image.id}}">
-							<img class="img-responsive" src="http://localhost:8888/img/photos/{{image.name}}" alt="" />
+							<img class="img-responsive" src="{{ site_url()}}/img/photos/{{image.name}}" alt="" />
 							<div class="pro-grid image-order" data-id="{{image.id}}">
 								<div class="pro-btns">
 									<a class="detail btn-album fa fa-search-plus fa-3x" href="#" data-toggle="modal" data-target="#myModal-{{image.id}}">
@@ -31,7 +31,7 @@
 					  	<div class="modal-dialog">
 						    <div class="modal-content">
 						      	<div class="modal-body">
-									<img class="img-responsive" src="http://localhost:8888/photo/{{image.name}}" alt="" >
+									<img class="img-responsive" src="{{ site_url()}}/photo/{{image.name}}" alt="" >
 						      	</div>
 						    </div>
 					    </div>
@@ -48,4 +48,3 @@
 
 
 {% endblock %}
-

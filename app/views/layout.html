@@ -27,7 +27,7 @@
 	<link rel="stylesheet" type="text/css" href="{{ site_url()}}/css/style.css">
 
 	{% if pagina == 'home' %}
-		<link rel="stylesheet" type="text/css" href="http://localhost:8888/css/home.css">
+		<link rel="stylesheet" type="text/css" href="{{ site_url()}}/css/home.css">
 		<script src="{{ site_url()}}/bower_components/jquery/dist/jquery.min.js"></script>
 
 		<script type="text/javascript">
@@ -37,10 +37,6 @@
 		});
 		</script>
 	{% endif %}
-
-
-	<!-- Google Fonts  -->
-	<!--<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'> -->
 
 	<!--[if lt IE 9]>
 	<script src="assets/js/html5shiv.js"></script>
@@ -59,7 +55,7 @@
 		        <span class="icon-bar"></span>
 		      </button>
 		      <a class="navbar-brand" href="/">
-				<img src="http://localhost:8888/img/look_logo70.png" alt="Look Photografia">
+				<img src="{{ site_url()}}/img/logo70.png" alt="Look Photografia">
 		      </a>
 		    </div>
 
@@ -86,7 +82,7 @@
 				{% endif %}
 		        <li><a href="/contato" title="Contato">Contato</a></li>
 		      	<li class="social">
-		      		<a href="https://www.facebook.com/lookfotografia" title="Look Phhttp://localhost:8888otografia no Facebook" class="facebook" target="_blank"></a>
+		      		<a href="https://www.facebook.com/" title="Photo Commerce no Facebook" class="facebook" target="_blank"></a>
 		      	</li>
 		      </ul>
 		    </div><!-- /.navbar-collapse -->

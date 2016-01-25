@@ -40,7 +40,7 @@
 <div class="row-fluid">
 <?php foreach($manages as $manage):?>
     <div class="col-md-3 col-sm-6 col-xs-12 bottom-content">
-    	<img class="img-responsive" src="http://localhost:8888/img/album_cover/<?= $manage->cover; ?>" alt="" >
+    	<img class="img-responsive" src="/img/album_cover/<?= $manage->cover; ?>" alt="" >
     	<button class="btn btn-lg btn-block btn-flat btn-danger btn-manage" data-id="<?= $manage->id; ?>">Retirar relação</button>
     </div>
 <?php endforeach; ?>

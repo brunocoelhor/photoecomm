@@ -6,7 +6,7 @@
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
         <!-- Favicon -->
-        <link rel='shortcut icon' href='http://localhost:8888/img/favicon.png' />
+        <link rel='shortcut icon' href='{{ site_url()}}/img/favicon.png' />
         <!-- Bootstrap -->
         <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" />
         <!-- Font Awesome -->
@@ -97,22 +97,22 @@
                                 <i class="fa fa-th"></i>
                                 <span>Categorias</span>
                             </a>
-                        </li>                        
+                        </li>
                         <li>
                             <a href="<?php echo site_url();?>/admin/albums">
-                                <i class="fa fa-book"></i> 
+                                <i class="fa fa-book"></i>
                                 <span>Álbuns</span>
                             </a>
                         </li>
                         <li>
                             <a href="<?php echo site_url();?>/admin/images">
-                                <i class="fa fa-picture-o"></i> 
+                                <i class="fa fa-picture-o"></i>
                                 <span>Imagens</span>
                             </a>
                         </li>
                         <li>
                             <a href="<?php echo site_url();?>/admin/customers">
-                                <i class="fa fa-users"></i> 
+                                <i class="fa fa-users"></i>
                                 <span>Clientes</span>
                             </a>
                         </li>
@@ -164,7 +164,7 @@
                 modal.find('.modal-body #album-name').val(name)
                 modal.find('.modal-body #album-id').val(id)
                 modal.find('.modal-body form').attr('action','/admin/categories/delete/'+id)
-            });     
+            });
 
             $('#editAlbum').on('show.bs.modal', function (event) {
                 var a = $(event.relatedTarget) // Button that triggered the modal
@@ -200,7 +200,7 @@
                 var name = a.data('name'); // Extract info from data-* attributes
                 var id = a.data('id');
                 var cover = a.data('cover');
-                
+
                 // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
                 // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
                 var modal = $(this)
@@ -216,7 +216,7 @@
                     $('.modal-body img').remove();
                     modal.find('.modal-body .current-cover').append('<img class="img-responsive cover-form" src="" />');
                     modal.find('.modal-body img').attr('src','/img/category_cover/' + cover);
-                }                
+                }
             });
 
             $('#editAlbumCover').on('show.bs.modal', function (event) {
@@ -224,7 +224,7 @@
                 var name = a.data('name'); // Extract info from data-* attributes
                 var id = a.data('id');
                 var cover = a.data('cover');
-                
+
                 // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
                 // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
                 var modal = $(this)
@@ -240,7 +240,7 @@
                     $('.modal-body img').remove();
                     modal.find('.modal-body .current-cover').append('<img class="img-responsive cover-form" src="" />');
                     modal.find('.modal-body img').attr('src','/img/album_cover/' + cover);
-                }                
+                }
             });
 
             $('#cadImage').on('show.bs.modal', function (event) {
@@ -284,7 +284,7 @@
                 modal.find('.modal-body #customer-name').val(name)
                 modal.find('.modal-body #customer-id').val(id)
                 modal.find('.modal-body form').attr('action','/admin/customers/delete/'+id)
-            }); 
+            });
 
 
             $(function() {
@@ -306,4 +306,3 @@
         </script>
     </body>
 </html>
-
