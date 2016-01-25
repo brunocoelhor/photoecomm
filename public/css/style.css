@@ -1,8 +1,12 @@
-@font-face {
-  font-family: 'NexaLight';
-  src: url('../fonts/NexaLight.eot?#iefix') format('embedded-opentype'),  url('../fonts/NexaLight.woff') format('woff'), url('../fonts/NexaLight.ttf')  format('truetype'), url('../fonts/NexaLight.svg#NexaLight') format('svg');
-  font-weight: normal;
-  font-style: normal;
+@font-face{
+    font-family: 'NexaLight';
+    src: url('../fonts/NexaLight.eot');
+    src: url('../fonts/NexaLight.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/NexaLight.woff') format('woff'),
+         url('../fonts/NexaLight.ttf') format('truetype'),
+         url('../fonts/NexaLight.svg#NexaLight') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
 
 html, body {
@@ -63,7 +67,7 @@ a:focus {
 }
 
 .navbar-custom {
-  background: #fff;/* #AE9C96 #D0CABF #989898 */
+  background: rgba(255, 255, 255, 0.7);;/* #fff #AE9C96 #D0CABF #989898 */
   border-color: none;
 }
 
@@ -136,6 +140,7 @@ a:focus {
 .social a{
 	height: 25px;
 	width: 25px;
+  z-index: 1000;
 }
 
 .social .facebook{

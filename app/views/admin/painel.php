@@ -71,7 +71,7 @@
 	        <div class="small-box bg-red">
 	            <div class="inner">
 	                <h3>
-	                    0
+	                    <?php echo count($orders); ?>
 	                </h3>
 	                <p>
 	                    Pedidos Realizados
@@ -80,7 +80,7 @@
 	            <div class="icon">
 	                <i class="fa fa-line-chart"></i>
 	            </div>
-	            <a href="#" class="small-box-footer">
+	            <a href="<?php echo site_url();?>/admin/orders" class="small-box-footer">
 	                Mais informações <i class="fa fa-arrow-circle-right"></i>
 	            </a>
 	        </div>

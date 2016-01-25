@@ -9,7 +9,7 @@ use \app\traits\login;
 
 $app->get('/', function() use($app,$twig)
 {
-	
+
 
 	$logado = login::customerLogado('user_logado',$app);
 
@@ -23,6 +23,7 @@ $app->get('/', function() use($app,$twig)
     $categories = categories::listar();
 
     $dados = array(
+			'pagina' => 'home',
     	'categories' => $categories,
     	'customer'  => $customer
 	);
@@ -43,7 +44,7 @@ $app->get('/assessoria-de-eventos-e-organizacao', function() use($app,$twig){
 	}
 
 	$categories = \app\models\categories::listar();
-	
+
 	$dados = array(
 		'categories' => $categories
 	);
@@ -66,7 +67,7 @@ $app->get('/contato', function() use($app,$twig){
 	//login::customerLogado('user_logado',$app);
 	//$customer = customers::where('name',$_SESSION['name']);
 	$categories = \app\models\categories::listar();
-	
+
 	$dados = array(
 		'categories' => $categories,
 		'customer'  => $customer
@@ -136,5 +137,3 @@ $app->get('/:slug/:album', function($slug,$album) use($app,$twig){
 	$template->display($dados);
 
 });
-
-

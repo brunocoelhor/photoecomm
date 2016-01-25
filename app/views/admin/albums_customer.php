@@ -15,7 +15,6 @@
 			<h3 class="text-center">Relacionadar um Novo Álbum</h3>
 		<form  class="form-inline" action="/admin/albums/create/" method="post" enctype="multipart/form-data" role="form">
 			<div class="form-group ">
-
 					<div class="input-group input-group-lg">
 					<select class="form-control" name="album-category" id="album-category">
 						<option value=""></option>

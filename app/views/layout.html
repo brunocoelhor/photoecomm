@@ -9,21 +9,35 @@
 	<!-- Mobile Specific Meta -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
-	
+
 	<!-- Favicon -->
-	<link rel='shortcut icon' href='http://localhost:8888/img/favicon.png' />	
-	
+	<link rel='shortcut icon' href='{{ site_url()}}/img/favicon.png' />
+
 	<!-- Bootstrap  -->
-	<link rel="stylesheet" type="text/css" href="http://localhost:8888/bower_components/bootstrap/dist/css/bootstrap.min.css">
-	
+	<link rel="stylesheet" type="text/css" href="{{ site_url()}}/bower_components/bootstrap/dist/css/bootstrap.min.css">
+
 	<!-- Animate.css  -->
-	<link rel="stylesheet" type="text/css" href="http://localhost:8888/bower_components/animate.css/animate.min.css">
-	
+	<!-- <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> -->
+	<link rel="stylesheet" type="text/css" href="{{ site_url()}}/bower_components/animate.css/animate.min.css">
+
 	<!-- Font-Awesome  -->
-	<link rel="stylesheet" type="text/css" href="http://localhost:8888/bower_components/font-awesome/css/font-awesome.min.css">
-	
+	<link rel="stylesheet" type="text/css" href="{{ site_url()}}/bower_components/font-awesome/css/font-awesome.min.css">
+
 	<!-- Custom Style  -->
-	<link rel="stylesheet" type="text/css" href="http://localhost:8888/css/style.css">
+	<link rel="stylesheet" type="text/css" href="{{ site_url()}}/css/style.css">
+
+	{% if pagina == 'home' %}
+		<link rel="stylesheet" type="text/css" href="http://localhost:8888/css/home.css">
+		<script src="{{ site_url()}}/bower_components/jquery/dist/jquery.min.js"></script>
+
+		<script type="text/javascript">
+		jQuery(window).load(function() {
+		    jQuery("#status").fadeOut("slow");
+		    jQuery("#loader").delay(500).fadeOut();
+		});
+		</script>
+	{% endif %}
+
 
 	<!-- Google Fonts  -->
 	<!--<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'> -->
@@ -72,7 +86,7 @@
 				{% endif %}
 		        <li><a href="/contato" title="Contato">Contato</a></li>
 		      	<li class="social">
-		      		<a href="https://www.facebook.com/lookfotografia" title="Look Photografia no Facebook" class="facebook" target="_blank"></a>
+		      		<a href="https://www.facebook.com/lookfotografia" title="Look Phhttp://localhost:8888otografia no Facebook" class="facebook" target="_blank"></a>
 		      	</li>
 		      </ul>
 		    </div><!-- /.navbar-collapse -->
@@ -81,28 +95,13 @@
 		<main>
 			{% block content %} {% endblock %}
 		</main>
-
-	<script src="http://localhost:8888/bower_components/jquery/dist/jquery.min.js"></script>
-	<script src="http://localhost:8888/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-	<script src="http://localhost:8888/bower_components/isotope/dist/isotope.pkgd.min.js"></script>
-	<script src="http://localhost:8888/js/order.js"></script>
+	{% if pagina != 'home' %}
+		<script src="{{ site_url()}}/bower_components/jquery/dist/jquery.min.js"></script>
+	{% endif %}
+	<script src="{{ site_url()}}/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="{{ site_url()}}/bower_components/isotope/dist/isotope.pkgd.min.js"></script>
+	<script src="{{ site_url()}}/js/order.js"></script>
 	<script type="text/javascript">
-		// external js: isotope.pkgd.js
-
-		$( function() {
-		  // init Isotope
-		  var $container = $('#isotope-demo').isotope({
-		    itemSelector: '.element-item',
-		    layoutMode: 'masonry',
-		    masonry: {
-		      columnWidth: 5
-		    }
-		  });
-
-		  var isHorizontal = false;
-		  var $window = $( window );
-		});
-
 		$(document).ready(function(){
 		    $('.poper1').attr('title','Clique na imagem para selecionar');
 		    $('.poper1').attr('data-content','Quando selecionada a imagem ficará com uma borda verde.');
@@ -114,7 +113,7 @@
 		    window.setTimeout(function(){
 		    	$('.poper3').attr('title','Aumentar a foto.');
 		    	$('.poper3').attr('data-content','Para aumentar a foto clique na lupa no centro da imagem.');
-		    	$('.poper3').attr('data-placement','right');		    	
+		    	$('.poper3').attr('data-placement','right');
 		        $('.poper3').popover('show');
 		    }, 6000); //600 are the ms until the timeout is called
 		    window.setTimeout(function(){

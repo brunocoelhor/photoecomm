@@ -4,7 +4,15 @@
 
 {% block content %}
 
-	<div id="isotope-demo" class="isotope visible-lg">
+        <div id="loader">
+          <div id="status"></div>
+        </div>
+        <ul class="cb-slideshow">
+          {% for category in categories %}
+            <li><img src="img/category_cover/{{category.cover}}" class="bg" class="bg"><div><h3><a href="/{{category.slug}}">{{category.name}}</a></h3></div></li>
+          {% endfor %}
+        </ul>
+	<!-- <div id="isotope-demo" class="isotope visible-lg">
 		{% for category in categories %}
 			<a href="/{{category.slug}}">
 				<div class="element-item {{category.config_lg}}">
@@ -17,35 +25,7 @@
 				</div>
 			</a>
 		{% endfor %}
-	</div>
+	</div> -->
 
-	<div id="isotope-demo" class="isotope visible-md">
-		{% for category in categories %}
-			<a href="/{{ category.slug }}">
-				<div class="element-item {{category.config_md}}">
-					<img class="img-responsive" src="img/category_cover/{{category.cover}}" alt="" >
-					<div class="image-description">
-						<div class="inner">
-		                	<h3>{{category.name}}</h3>
-		                </div>
-		            </div>
-				</div>
-			</a>
-		{% endfor %}
-	</div>	
 
-	<div id="isotope-demo" class="isotope visible-sm visible-xs">
-		{% for category in categories %}
-			<a href="/{{ category.slug }}">
-				<div class="element-item {{category.config_sm}}">
-					<img class="img-responsive" src="img/category_cover/{{category.cover}}" alt="" >
-					<div class="image-description">
-						<div class="inner">
-		                	<h3>{{category.name}}</h3>
-		                </div>
-		            </div>
-				</div>
-			</a>
-		{% endfor %}
-	</div>
 {% endblock %}
