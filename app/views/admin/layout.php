@@ -10,7 +10,8 @@
         <!-- Bootstrap -->
         <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" />
         <!-- Font Awesome -->
-        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <!-- <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" /> -->
+        <link href="/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <!-- DataTables style -->
         <link href="/css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
         <!-- Theme style -->
@@ -139,7 +140,7 @@
         <script src="/js/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
         <script src="/js/bootstrap-filestyle.min.js"></script>
         <script src="/js/appear.js"></script>
-                <script src="/js/image.js"></script>
+        <script src="/js/image.js"></script>
 
         <!-- AdminLTE App -->
         <script src="/js/AdminLTE/app.js" type="text/javascript"></script>
@@ -304,7 +305,6 @@
                     "bAutoWidth": true
                 });
             });
-
 
             setTimeout(function(){
                 $('#div-alerta').fadeOut(1000);
