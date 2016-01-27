@@ -16,6 +16,8 @@
         <link href="/css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
         <!-- Theme style -->
         <link href="/css/AdminLTE.css" rel="stylesheet" type="text/css" />
+        <!-- jQuery -->
+        <script src="/js/jquery.min.js"></script>
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -29,7 +31,7 @@
         <header class="header">
             <a href="/painel" class="logo">
                 <!-- Add the class icon to your logo image or logo icon to add the margining -->
-                <img src="/img/logo.png" alt="Look Photografia">
+                <img src="/img/logo.png" alt="Photo Commerce">
             </a>
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top" role="navigation">
@@ -134,166 +136,18 @@
             </aside><!-- /.right-side -->
         </div><!-- ./wrapper -->
 
-        <script src="/js/jquery.min.js"></script>
         <script src="/js/bootstrap.min.js" type="text/javascript"></script>
         <script src="/js/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
         <script src="/js/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
         <script src="/js/bootstrap-filestyle.min.js"></script>
-        <script src="/js/appear.js"></script>
-        <script src="/js/image.js"></script>
+        <script src="/js/admin/categories.js"></script>
+        <script src="/js/admin/albums.js"></script>
+        <script src="/js/admin/customers.js"></script>
+        <script src="/js/admin/images.js"></script>
 
         <!-- AdminLTE App -->
         <script src="/js/AdminLTE/app.js" type="text/javascript"></script>
         <script type="text/javascript">
-
-            $('#editCategory').on('show.bs.modal', function (event) {
-                var a = $(event.relatedTarget) // Button that triggered the modal
-                var name = a.data('name') // Extract info from data-* attributes
-                var id = a.data('id')
-                var slug = a.data('slug')
-                // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-                // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-                var modal = $(this)
-                modal.find('.modal-title').text('Editar ' + name)
-                modal.find('.modal-body #category-name').val(name)
-                modal.find('.modal-body #category-id').val(id)
-                modal.find('.modal-body #category-slug').val(slug)
-            });
-
-            $('#delCategory').on('show.bs.modal', function (event) {
-                var a = $(event.relatedTarget) // Button that triggered the modal
-                var name = a.data('name') // Extract info from data-* attributes
-                var id = a.data('id')
-                // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-                // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-                var modal = $(this)
-                modal.find('.modal-title').text('Deletar ' + name)
-                modal.find('.modal-body #album-name').val(name)
-                modal.find('.modal-body #album-id').val(id)
-                modal.find('.modal-body form').attr('action','/admin/categories/delete/'+id)
-            });
-
-            $('#editAlbum').on('show.bs.modal', function (event) {
-                var a = $(event.relatedTarget) // Button that triggered the modal
-                var name = a.data('name') // Extract info from data-* attributes
-                var id = a.data('id')
-                var slug = a.data('slug')
-                var category = a.data('category')
-                var price = a.data('price')
-                // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-                // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-                var modal = $(this)
-                modal.find('.modal-title').text('Editar ' + name)
-                modal.find('.modal-body #album-name').val(name)
-                modal.find('.modal-body #album-id').val(id)
-                modal.find('.modal-body #album-slug').val(slug)
-                modal.find('.modal-body #album-category').val(category)
-                modal.find('.modal-body #album-price').val(price)
-            });
-
-            $('#delAlbum').on('show.bs.modal', function (event) {
-                var a = $(event.relatedTarget) // Button that triggered the modal
-                var name = a.data('name') // Extract info from data-* attributes
-                var id = a.data('id')
-                // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-                // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-                var modal = $(this)
-                modal.find('.modal-title').text('Deletar ' + name)
-                modal.find('.modal-body form').attr('action','/admin/albums/delete/'+id)
-            });
-
-            $('#editCategoryCover').on('show.bs.modal', function (event) {
-                var a = $(event.relatedTarget); // Button that triggered the modal
-                var name = a.data('name'); // Extract info from data-* attributes
-                var id = a.data('id');
-                var cover = a.data('cover');
-
-                // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-                // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-                var modal = $(this)
-                modal.find('.modal-title').text('Cadastrar Capa da Categoria ' + name);
-                modal.find('.modal-body #category-id').val(id)
-                modal.find('.modal-body form').attr('action','/admin/categories/cover/'+id);
-                if( cover.length === 0){
-                    $('.modal-body p').remove();
-                    $('.modal-body img').remove();
-                    modal.find('.modal-body .current-cover').append('<p>Nenhuma imagem cadastrada</p>');
-                }else{
-                    $('.modal-body p').remove();
-                    $('.modal-body img').remove();
-                    modal.find('.modal-body .current-cover').append('<img class="img-responsive cover-form" src="" />');
-                    modal.find('.modal-body img').attr('src','/img/category_cover/' + cover);
-                }
-            });
-
-            $('#editAlbumCover').on('show.bs.modal', function (event) {
-                var a = $(event.relatedTarget); // Button that triggered the modal
-                var name = a.data('name'); // Extract info from data-* attributes
-                var id = a.data('id');
-                var cover = a.data('cover');
-
-                // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-                // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-                var modal = $(this)
-                modal.find('.modal-title').text('Cadastrar Capa do Álbum ' + name);
-                modal.find('.modal-body #album-id').val(id)
-                modal.find('.modal-body form').attr('action','/admin/albums/cover/'+id);
-                if( cover.length === 0){
-                    $('.modal-body p').remove();
-                    $('.modal-body img').remove();
-                    modal.find('.modal-body .current-cover').append('<p>Nenhuma imagem cadastrada</p>');
-                }else{
-                    $('.modal-body p').remove();
-                    $('.modal-body img').remove();
-                    modal.find('.modal-body .current-cover').append('<img class="img-responsive cover-form" src="" />');
-                    modal.find('.modal-body img').attr('src','/img/album_cover/' + cover);
-                }
-            });
-
-            $('#cadImage').on('show.bs.modal', function (event) {
-                var a = $(event.relatedTarget) // Button that triggered the modal
-                var name = a.data('name') // Extract info from data-* attributes
-                var id = a.data('id')
-                // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-                // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-                var modal = $(this)
-                modal.find('.modal-title').text('Inserir Fotos em ' + name)
-                modal.find('.modal-body form').attr('action','/admin/images/photo/'+id)
-                modal.find('.modal-body #album-id').val(id)
-            });
-
-            $('#editCustomer').on('show.bs.modal', function (event) {
-                var a = $(event.relatedTarget) // Button that triggered the modal
-                var name = a.data('name') // Extract info from data-* attributes
-                var id = a.data('id')
-                var email = a.data('email')
-                var pass = a.data('pass')
-                // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-                // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-                var modal = $(this)
-                modal.find('.modal-title').text('Editar ' + name)
-                modal.find('.modal-body #customer-id').val(id)
-                modal.find('.modal-body #customer-name').val(name)
-                modal.find('.modal-body #customer-email').val(email)
-                modal.find('.modal-body #customer-pass').val(pass)
-                modal.find('.modal-body #customer-conf-pass').val(pass)
-                modal.find('.modal-body form').attr('action','/admin/customers/edit/'+id)
-            });
-
-            $('#delCustomer').on('show.bs.modal', function (event) {
-                var a = $(event.relatedTarget) // Button that triggered the modal
-                var name = a.data('name') // Extract info from data-* attributes
-                var id = a.data('id')
-                // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-                // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-                var modal = $(this)
-                modal.find('.modal-title').text('Deletar ' + name)
-                modal.find('.modal-body #customer-name').val(name)
-                modal.find('.modal-body #customer-id').val(id)
-                modal.find('.modal-body form').attr('action','/admin/customers/delete/'+id)
-            });
-
-
             $(function() {
                 $("#example1").dataTable();
                 $('#example2').dataTable({

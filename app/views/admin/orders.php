@@ -16,7 +16,7 @@
 										<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$flash['sucesso'].'</div>' : ''; ?>
 		<div class="row">
 			<div class="box-bottom">
-				<a href="#" class="btn btn-flat btn-lg btn-success cad-novo" data-toggle="modal" data-target="#cadCustomer"><i class="fa fa-plus-circle"></i><span> Cadastrar Novo Cliente</span></a>
+				<a href="#" class="btn btn-flat btn-lg btn-success cad-novo" data-toggle="modal" data-target="#cadOrder"><i class="fa fa-plus-circle"></i><span> Cadastrar Novo Pedido</span></a>
 			</div>
 		</div>
 		<div class="box">

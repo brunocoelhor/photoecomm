@@ -3,33 +3,28 @@
 <head>
 	<meta charset="UTF-8">
 	<title>{% block titulo  %} {% endblock %}</title>
-	<meta name="description" content="Look Photografia - O seu maior momento em dealhes." >
-	<meta name="author" content="Look Photografia">
+	<meta name="description" content="Photo Commerce - O seu maior momento em dealhes." >
+	<meta name="author" content="Photo Commerce">
 
 	<!-- Mobile Specific Meta -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
-
 	<!-- Favicon -->
 	<link rel='shortcut icon' href='{{ site_url()}}/img/favicon.png' />
-
 	<!-- Bootstrap  -->
 	<link rel="stylesheet" type="text/css" href="{{ site_url()}}/bower_components/bootstrap/dist/css/bootstrap.min.css">
-
 	<!-- Animate.css  -->
-	<!-- <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> -->
 	<link rel="stylesheet" type="text/css" href="{{ site_url()}}/bower_components/animate.css/animate.min.css">
-
 	<!-- Font-Awesome  -->
+	<!-- <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> -->
 	<link rel="stylesheet" type="text/css" href="{{ site_url()}}/bower_components/font-awesome/css/font-awesome.min.css">
-
 	<!-- Custom Style  -->
 	<link rel="stylesheet" type="text/css" href="{{ site_url()}}/css/style.css">
+  <!-- jQuery -->
+	<script src="{{ site_url()}}/bower_components/jquery/dist/jquery.min.js"></script>
 
 	{% if pagina == 'home' %}
 		<link rel="stylesheet" type="text/css" href="{{ site_url()}}/css/home.css">
-		<script src="{{ site_url()}}/bower_components/jquery/dist/jquery.min.js"></script>
-
 		<script type="text/javascript">
 		jQuery(window).load(function() {
 		    jQuery("#status").fadeOut("slow");
@@ -55,7 +50,7 @@
 		        <span class="icon-bar"></span>
 		      </button>
 		      <a class="navbar-brand" href="/">
-				<img src="{{ site_url()}}/img/logo70.png" alt="Look Photografia">
+				<img src="{{ site_url()}}/img/logo70.png" alt="Photo Commerce">
 		      </a>
 		    </div>
 
@@ -91,40 +86,42 @@
 		<main>
 			{% block content %} {% endblock %}
 		</main>
-	{% if pagina != 'home' %}
-		<script src="{{ site_url()}}/bower_components/jquery/dist/jquery.min.js"></script>
-	{% endif %}
 	<script src="{{ site_url()}}/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="{{ site_url()}}/bower_components/isotope/dist/isotope.pkgd.min.js"></script>
 	<script src="{{ site_url()}}/js/order.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
-		    $('.poper1').attr('title','Clique na imagem para selecionar');
-		    $('.poper1').attr('data-content','Quando selecionada a imagem ficará com uma borda verde.');
-		    $('.poper1').attr('data-placement','top');
-		    $('.poper1').popover('show');
-		    window.setTimeout(function(){
-		        $('.poper1').popover('hide');
-		    }, 6000); //600 are the ms until the timeout is called
-		    window.setTimeout(function(){
-		    	$('.poper3').attr('title','Aumentar a foto.');
-		    	$('.poper3').attr('data-content','Para aumentar a foto clique na lupa no centro da imagem.');
-		    	$('.poper3').attr('data-placement','right');
-		        $('.poper3').popover('show');
-		    }, 6000); //600 are the ms until the timeout is called
-		    window.setTimeout(function(){
-		        $('.poper3').popover('hide');
-		    }, 12000); //600 are the ms until the timeout is called
+
+			var url = window.location;
+			$('ul.nav a[href="'+ url +'"]').parent().addClass('active');
+			$('ul.nav a').filter(function() {
+			    return this.href == url;
+			}).parent().addClass('active');
+
+
+		    // $('.poper1').attr('title','Clique na imagem para selecionar');
+		    // $('.poper1').attr('data-content','Quando selecionada a imagem ficará com uma borda verde.');
+		    // $('.poper1').attr('data-placement','top');
+		    // $('.poper1').popover('show');
+		    // window.setTimeout(function(){
+		    //     $('.poper1').popover('hide');
+		    // }, 6000); //600 are the ms until the timeout is called
+		    // window.setTimeout(function(){
+		    // 	$('.poper3').attr('title','Aumentar a foto.');
+		    // 	$('.poper3').attr('data-content','Para aumentar a foto clique na lupa no centro da imagem.');
+		    // 	$('.poper3').attr('data-placement','right');
+		    //     $('.poper3').popover('show');
+		    // }, 6000); //600 are the ms until the timeout is called
+		    // window.setTimeout(function(){
+		    //     $('.poper3').popover('hide');
+		    // }, 12000); //600 are the ms until the timeout is called
 		});
 
-var url = window.location;
-// Will only work if string in href matches with location
-$('ul.nav a[href="'+ url +'"]').parent().addClass('active');
 
-// Will also work for relative and absolute hrefs
-$('ul.nav a').filter(function() {
-    return this.href == url;
-}).parent().addClass('active');
+
+// setTimeout(function(){
+// 		$('.messagem-item').fadeOut(1000);
+// },4000);
 
 
 	</script>

@@ -185,6 +185,25 @@ $app->get('/cart', function() use($app,$twig){
 
 });
 
+$app->post('/cart/remove/:id', function($id) use($app){
+	$logado= login::banLogado('user_logado',$app);
+
+	if ($logado){
+		$customer = customers::where('name',$_SESSION['name']);
+	}else{
+
+	}
+
+	$attributes = [
+			'purchased' => 0
+	];
+
+	$images = new \app\models\images();
+	$images->atualizar($id,$attributes);
+});
+
+
+
 $app->post('/invoice', function() use($app,$twig){
 	$logado= login::banLogado('user_logado',$app);
 
@@ -233,8 +252,6 @@ $app->post('/invoice', function() use($app,$twig){
 	}
 
 	$items_order = item_order::all(array('conditions' => array("order_id = $order_id")));
-
-	//print_r($items_order);
 
 	$dados = array(
 		'categories' => $categories,

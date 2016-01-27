@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% block titulo %}Look Photografia - Ensaios{% endblock %}
+{% block titulo %}Photo Commerce - Ensaios{% endblock %}
 
 {% block content %}
 	<div class="container">
@@ -10,13 +10,9 @@
 	    {% if images | length > 0 %}
 				{% for image in images %}
 					<div class="col-md-3 col-sm-6 col-xs-12 bottom-content image-cart">
+					<a href="#" data-toggle="modal" data-target="#myModal-{{image.id}}">
 						<img class="img-responsive" src="{{ site_url()}}/img/photos/thumbs/{{image.name}}" alt="" />
-						<div class="pro-grid image-order" data-id="{{image.id}}">
-							<div class="pro-btns">
-								<a class="detail btn-album fa fa-search-plus fa-3x" href="#" data-toggle="modal" data-target="#myModal-{{image.id}}">
-								</a>
-							</div>
-						</div>
+					</a>
 					</div>
 
 					<!-- Modal -->

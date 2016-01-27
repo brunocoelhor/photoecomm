@@ -123,18 +123,33 @@ $('.input-number').change(function() {
 	});
 
 	granTotal();
-});
-
-granTotal();
-function granTotal(){
-	var sum = 0;
-	$('.priceSub').each(function() {
-	    sum += parseFloat($(this).text());
 	});
-	return $('#grandtotal').html('R$ '+ sum);
-}
+
+	granTotal();
+	function granTotal(){
+		var sum = 0;
+		$('.priceSub').each(function() {
+		    sum += parseFloat($(this).text());
+		});
+		return $('#grandtotal').html('R$ '+ sum);
+	}
 
 
 $("#imprime").click(function (){
 	$("div#myPrintArea").printArea();
-})
+});
+
+
+
+$(document.body).on('click', '.del-item-order', function(event){
+		var id = $(this).attr('data-id');
+		$.ajax({
+			url: '/cart/remove/'+id,
+			type: 'POST',
+			success: function(){
+				location.reload();
+				$("#div-message").removeClass('message-display-none');
+			}
+		});
+		event.preventDefault();
+});

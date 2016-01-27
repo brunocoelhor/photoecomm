@@ -23,5 +23,4 @@ $(document).ready(function(){
 		event.preventDefault();
 		console.log("Clicou em Editar");
 	});
-
 });

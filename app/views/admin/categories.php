@@ -38,7 +38,7 @@
 							<td class="hidden"></td>
 							<td class="text-center"><a href="#" data-id="<?php echo $category->id; ?>" class="btn btn-flat btn-warning fa fa-edit" data-toggle="modal" data-target="#editCategory" data-name="<?=$category->name;?>" data-slug="<?= $category->slug; ?>">Editar</a></td>
 							<td class="text-center"><a href="#" data-id="<?php echo $category->id; ?>" class="btn  btn-flat btn-danger fa fa-trash-o" data-toggle="modal" data-target="#delCategory" data-name="<?=$category->name;?>"> Excluir</a></td>
-                            <td class="text-center"><a href="#" data-id="<?php echo $category->id; ?>" class="btn  btn-flat btn-primary fa fa-picture-o" data-toggle="modal" data-target="#editCategoryCover" data-name="<?=$category->name;?>" data-cover="<?=$category->cover;?>"> Gerenciar Capa</a></td>
+              <td class="text-center"><a href="#" data-id="<?php echo $category->id; ?>" class="btn  btn-flat btn-primary fa fa-picture-o" data-toggle="modal" data-target="#editCategoryCover" data-name="<?=$category->name;?>" data-cover="<?=$category->cover;?>"> Gerenciar Capa</a></td>
 						</tr>
 					<?php endforeach; ?>
 	                </tbody>
