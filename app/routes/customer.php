@@ -90,13 +90,14 @@ $app->get('/area-do-cliente/:id', function($id) use($app,$twig)
 
 	}
 
-
+	$categories = categories::listar();
 	$customer = customers::where('id',$id);
 	$album = $customer->albums_id;
 
 	$albums = albums::where('id',$album);
 
 	$dados = array(
+		'categories' => $categories,
 		'customer' => $customer,
 		'albums' => $albums
 	);

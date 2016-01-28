@@ -4,7 +4,7 @@
 		<small>Informações sobre imagens cadastradas</small>
 	</h1>
 	<ol class="breadcrumb">
-		<li class="active"><a href="#"><i class="fa fa-book"></i> Imagens</a></li>
+		<li class="active"><a href="#"><i class="fa fa-picture-o"></i> Imagens</a></li>
 	</ol>
 </section>
 <section class="content">

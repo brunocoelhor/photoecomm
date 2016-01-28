@@ -4,7 +4,7 @@
 		<small>Informações sobre clientes cadastradas</small>
 	</h1>
 	<ol class="breadcrumb">
-		<li class="active"><a href="#"><i class="fa fa-th"></i> Clientes</a></li>
+		<li class="active"><a href="#"><i class="fa fa-users"></i> Clientes</a></li>
 	</ol>
 </section>
 <section class="content">
