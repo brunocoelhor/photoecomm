@@ -126,7 +126,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="<?php echo site_url();?>/admin/config">
+                            <a href="<?php echo site_url();?>/admin/configuration">
                                 <i class="fa fa-gear"></i>
                                 <span>Configurações</span>
                             </a>
