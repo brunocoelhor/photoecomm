@@ -1,6 +1,6 @@
 /* @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic);
 @import url(http://fonts.googleapis.com/css?family=Kaushan+Script); */
-/*! 
+/*!
  *   AdminLTE v1.2
  *   Author: AlmsaeedStudio.com
  *   License: Open source - MIT
@@ -773,7 +773,7 @@ font-size: 18px;
     left: 0px;
   }
 }
-/* 
+/*
     Dropdown menus
 ----------------------------
 */
@@ -1151,7 +1151,7 @@ font-size: 18px;
     left: auto;
   }
 }
-/* 
+/*
    All form elements including input, select, textarea etc.
 -----------------------------------------------------------------
 */
@@ -1201,7 +1201,7 @@ font-size: 18px;
 .radio {
   padding-left: 0;
 }
-/* 
+/*
     Compenent: Progress bars
 --------------------------------
 */
@@ -2072,7 +2072,7 @@ Component: timeline
   -moz-border-radius: 50%;
   border-radius: 50%;
 }
-/* 
+/*
     Component: callout
 ------------------------
 */
@@ -2112,7 +2112,7 @@ Component: timeline
 .callout.callout-info h4 {
   color: #3A87AD;
 }
-/* 
+/*
     Component: alert
 ------------------------
 */
@@ -2424,7 +2424,7 @@ Component: timeline
   margin-top: 30px;
   text-align: center;
 }
-/* 
+/*
     Page: register and login
 */
 .form-box {
@@ -2497,7 +2497,7 @@ Component: timeline
     width: 90%;
   }
 }
-/* 
+/*
     Page: 404 and 500 error pages
 ------------------------------------
 */
@@ -2547,7 +2547,7 @@ Component: timeline
 .error-page:after {
   clear: both;
 }
-/* 
+/*
     Page: Invoice
 */
 .invoice {
@@ -2580,12 +2580,12 @@ Component: timeline
     white-space: normal!important;
   }
 }
-/* 
+/*
     Skins
     -----
 */
-/* 
-    Skin Blue 
+/*
+    Skin Blue
     ---------
 */
 /* skin-blue navbar */
@@ -2884,8 +2884,8 @@ Component: timeline
   border-bottom-left-radius: 0 !important;
   border-left: 0;
 }
-/* 
-    Skin Blue 
+/*
+    Skin Blue
     ---------
 */
 /* skin-orange navbar */
@@ -3776,9 +3776,11 @@ fieldset[disabled] .btn-vk.active {
   filter: alpha(opacity=0);
 }
 
-
-
 .bottom-content {
   padding: 3px;
   margin-bottom: 2px;
+}
+
+.item-img{
+  max-width: 110px !important;
 }

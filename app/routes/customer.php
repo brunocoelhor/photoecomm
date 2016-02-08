@@ -79,6 +79,114 @@ $app->get('/area-do-cliente/logout', function() use($app){
 	$app->redirect('/');
 });
 
+$app->get('/area-do-cliente/cart', function() use($app,$twig){
+	$logado= login::banLogado('user_logado',$app);
+
+	if ($logado){
+		$customer = customers::where('name',$_SESSION['name']);
+	}else{
+
+	}
+
+	$categories = \app\models\categories::listar();
+	$album = albums::where('id',$_SESSION['album']);
+
+
+	$images = \app\models\images::all(array('conditions' => array('purchased = 1')));
+
+	$dados = array(
+		'categories' => $categories,
+		'album' => $album,
+		'images' => $images,
+		'customer' => $customer
+	);
+
+	$template = $twig->loadTemplate('cart.html');
+	$template->display($dados);
+
+});
+
+$app->post('/area-do-cliente/invoice', function() use($app,$twig){
+	$logado= login::banLogado('user_logado',$app);
+
+	if ($logado){
+		$customer = customers::where('name',$_SESSION['name']);
+	}else{
+
+	}
+	$customer_id = $customer->id;
+
+
+	$categories = \app\models\categories::listar();
+	$album = albums::where('id',$_SESSION['album']);
+	$price = $album->price;
+
+	$attributes = array(
+		'customer_id' => $customer_id,
+	);
+	orders::cadastrar($attributes);
+	$order = \app\models\orders::find('last');
+	$order_id = $order->id;
+
+
+	$images = \app\models\images::all(array('conditions' => array('purchased = 1')));
+	$granTotal = 0;
+	foreach($images as $image){
+
+		$image_id = $image->id;
+		$amount = $app->request()->post("quant-$image_id");
+		$total = $price * $amount;
+		$att = array(
+			'order_id' => $order_id,
+			'image_id' => $image_id,
+			'amount' => $amount,
+			'total' => $total
+		);
+		item_order::cadastrar($att);
+		$granTotal += $total;
+
+		$reset = array(
+			'purchased' => 0,
+			'sale_count' => 1
+		);
+		$imageReset = new images();
+		$imageReset->atualizar($image_id,$reset);
+	}
+
+	$items_order = item_order::all(array('conditions' => array("order_id = $order_id")));
+
+	$dados = array(
+		'categories' => $categories,
+		'album' => $album,
+		'images' => $images,
+		'customer' => $customer,
+		'order' => $order,
+		'items_order' => $items_order,
+		'granTotal' => $granTotal
+	);
+
+	$template = $twig->loadTemplate('invoice.html');
+	$template->display($dados);
+
+});
+
+$app->post('/area-do-cliente/cart/remove/:id', function($id) use($app){
+	$logado= login::banLogado('user_logado',$app);
+
+	if ($logado){
+		$customer = customers::where('name',$_SESSION['name']);
+	}else{
+
+	}
+
+	$attributes = [
+			'purchased' => 0
+	];
+
+	$images = new \app\models\images();
+	$images->atualizar($id,$attributes);
+});
+
 $app->get('/area-do-cliente/:id', function($id) use($app,$twig)
 {
 
@@ -155,116 +263,4 @@ $app->get('/image/purchased/:id', function($id) use($app){
 
 	$images = new \app\models\images();
 	$images->atualizar($id,$attributes);
-});
-
-
-
-$app->get('/cart', function() use($app,$twig){
-	$logado= login::banLogado('user_logado',$app);
-
-	if ($logado){
-		$customer = customers::where('name',$_SESSION['name']);
-	}else{
-
-	}
-
-	$categories = \app\models\categories::listar();
-	$album = albums::where('id',$_SESSION['album']);
-
-
-	$images = \app\models\images::all(array('conditions' => array('purchased = 1')));
-
-	$dados = array(
-		'categories' => $categories,
-		'album' => $album,
-		'images' => $images,
-		'customer' => $customer
-	);
-
-	$template = $twig->loadTemplate('cart.html');
-	$template->display($dados);
-
-});
-
-$app->post('/cart/remove/:id', function($id) use($app){
-	$logado= login::banLogado('user_logado',$app);
-
-	if ($logado){
-		$customer = customers::where('name',$_SESSION['name']);
-	}else{
-
-	}
-
-	$attributes = [
-			'purchased' => 0
-	];
-
-	$images = new \app\models\images();
-	$images->atualizar($id,$attributes);
-});
-
-
-
-$app->post('/invoice', function() use($app,$twig){
-	$logado= login::banLogado('user_logado',$app);
-
-	if ($logado){
-		$customer = customers::where('name',$_SESSION['name']);
-	}else{
-
-	}
-	$customer_id = $customer->id;
-
-
-	$categories = \app\models\categories::listar();
-	$album = albums::where('id',$_SESSION['album']);
-	$price = $album->price;
-
-	$attributes = array(
-		'customer_id' => $customer_id,
-	);
-	orders::cadastrar($attributes);
-	$order = \app\models\orders::find('last');
-	$order_id = $order->id;
-
-
-	$images = \app\models\images::all(array('conditions' => array('purchased = 1')));
-	$granTotal = 0;
-	foreach($images as $image){
-
-		$image_id = $image->id;
-		$amount = $app->request()->post("quant-$image_id");
-		$total = $price * $amount;
-		$att = array(
-			'order_id' => $order_id,
-			'image_id' => $image_id,
-			'amount' => $amount,
-			'total' => $total
-		);
-		item_order::cadastrar($att);
-		$granTotal += $total;
-
-		$reset = array(
-			'purchased' => 0,
-			'sale_count' => 1
-		);
-		$imageReset = new images();
-		$imageReset->atualizar($image_id,$reset);
-	}
-
-	$items_order = item_order::all(array('conditions' => array("order_id = $order_id")));
-
-	$dados = array(
-		'categories' => $categories,
-		'album' => $album,
-		'images' => $images,
-		'customer' => $customer,
-		'order' => $order,
-		'items_order' => $items_order,
-		'granTotal' => $granTotal
-	);
-
-	$template = $twig->loadTemplate('invoice.html');
-	$template->display($dados);
-
 });

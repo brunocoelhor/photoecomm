@@ -12,11 +12,12 @@
 
 <div class="row">
 	<div class="col-md-6 col-md-offset-3">
-			<h3 class="text-center">Relacionadar um Novo Álbum</h3>
-		<form  class="form-inline" action="/admin/albums/create/" method="post" enctype="multipart/form-data" role="form">
+			<h3 class="text-center">Relacionar um Novo Álbum</h3>
+		<form  class="form-inline" action="/admin/customers/albums_manage/album_add" method="post" enctype="multipart/form-data" role="form">
 			<div class="form-group ">
-					<div class="input-group input-group-lg">
-					<select class="form-control" name="album-category" id="album-category">
+				<input type="hidden" name="customer" value="<?= $customer->id; ?>" >
+				<div class="input-group input-group-lg">
+					<select class="form-control" name="album" id="album">
 						<option value=""></option>
 					<?php foreach($albums as $album): ?>
 						<option value="<?php echo $album->id; ?>"><?php echo $album->name; ?></option>
@@ -27,21 +28,25 @@
 						<span class="fa fa-save"></span> Relacionar Álbum
 						</button>
 					</span>
+				</div>
 			</div>
-
-</div>
 		</form>
-
 	</div>
-
-</div>
+</div> <!--row -->
 <hr>
+
+<?php echo isset($flash['erro']) ? '<div id="div-alerta" class="alert alert-danger alert-dismissable">
+																			<i class="fa fa-ban"></i>
+																			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$flash['erro'].'</div>' : ''; ?>
+<?php echo isset($flash['sucesso']) ? '<div id="div-alerta" class="alert alert-success alert-dismissable">
+									<i class="fa fa-check"></i>
+									<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$flash['sucesso'].'</div>' : ''; ?>
 
 <div class="row-fluid">
 <?php foreach($manages as $manage):?>
     <div class="col-md-3 col-sm-6 col-xs-12 bottom-content">
     	<img class="img-responsive" src="/img/album_cover/<?= $manage->cover; ?>" alt="" >
-    	<button class="btn btn-lg btn-block btn-flat btn-danger btn-manage" data-id="<?= $manage->id; ?>">Retirar relação</button>
+    	<button class="btn btn-lg btn-block btn-flat btn-danger btn-manage" data-id="<?= $manage->ab; ?>">Retirar relação</button>
     </div>
 <?php endforeach; ?>
 </div>

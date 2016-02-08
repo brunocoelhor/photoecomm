@@ -15,9 +15,9 @@
 										<i class="fa fa-check"></i>
 										<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$flash['sucesso'].'</div>' : ''; ?>
 		<div class="row">
-			<div class="box-bottom">
+			<!-- <div class="box-bottom">
 				<a href="#" class="btn btn-flat btn-lg btn-success cad-novo" data-toggle="modal" data-target="#cadOrder"><i class="fa fa-plus-circle"></i><span> Cadastrar Novo Pedido</span></a>
-			</div>
+			</div> -->
 		</div>
 		<div class="box">
 	        <div class="box-body table-responsive">
@@ -46,29 +46,21 @@
 								<?php
 									switch ($order->status){
 										case 0:
-										echo $order->status = '<p class="text-danger"><i class="fa fa-hourglass-start text-danger fa-2x"></i> Pendente</p>';
+										echo '<p class="text-danger"><i class="fa fa-hourglass-start text-danger fa-2x"></i> Pendente</p>';
 										break;
 										case 1:
-										echo $order->status = '	<p class="text-warning"><i class="fa fa-cogs text-warning fa-2x"></i> Processando</p>';
+										echo '<p class="text-warning"><i class="fa fa-cogs text-warning fa-2x"></i> Processando</p>';
 										break;
 										case 2:
-										echo $order->status = '<p class="text-success"><i class="fa fa-thumbs-o-up text-success fa-2x"></i> Concluído</p>';
+										echo '<p class="text-success"><i class="fa fa-thumbs-o-up text-success fa-2x"></i> Concluído</p>';
 										break;
 										default:
        							echo "Erro";
-
 									}
   							?>
-								<!-- <p class="text-danger"><i class="fa fa-hourglass-start text-danger fa-2x"></i> Pendente</p>
-								<p class="text-warning"><i class="fa fa-cogs text-warning fa-2x"></i> Processando</p>
-								<p class="text-success"><i class="fa fa-thumbs-o-up text-success fa-2x"></i> Concluído</p>
-								<p class="text-success"><i class="fa fa-check text-success fa-2x"></i> Concluído</p> -->
-								<!-- <a href="#" data-id="" class="fa fa-hourglass-start text-danger" data-toggle="modal" data-target="#editCustomer" data-name=""> Pendente</a>
-								<a href="#" data-id="" class="fa fa-cogs text-warning" data-toggle="modal" data-target="#editCustomer" data-name=""> Processando</a>
-								<a href="#" data-id="" class="fa fa-thumbs-o-up text-success" data-toggle="modal" data-target="#editCustomer" data-name=""> Concluído</a> -->
-																		</td>
-							<td class="text-center"><a href="#" data-id="" class="btn  btn-flat btn-default fa fa-search" data-toggle="modal" data-target="#delCustomer" data-name=""> Ver Detalhes</a></td>
-              <td class="text-center"><a href="<?php echo site_url();?>/admin/customers/albums_manage/" class="btn  btn-flat btn-primary fa fa-book"> Gerenciar Pedido</a></td>
+							</td>
+							<td class="text-center"><a href="/admin/orders/orders_detail/<?= $order->id;?>" data-id="" class="btn  btn-flat btn-default fa fa-search"> Ver Detalhes</a></td>
+              <td class="text-center"><a href="#" data-id="<?= $order->id; ?>" class="btn btn-flat btn-primary fa fa-book" data-toggle="modal" data-target="#edit_status" data-status="<?= $order->status;?>"> Editar Status</a></td>
 						</tr>
 					<?php endforeach; ?>
 	                </tbody>
@@ -76,3 +68,31 @@
 	        </div><!-- /.box-body -->
 	    </div><!-- /.box -->
 </section><!-- /.content -->
+
+<div class="modal fade" id="edit_status" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Editar Status</h4>
+      </div>
+      <div class="modal-body">
+				<form  class="form-inline" action="" method="post" enctype="multipart/form-data" role="form">
+					<div class="form-group ">
+						<input type="hidden" name="order" value="" id="order-id">
+						<div class="input-group input-group-lg">
+							<select class="form-control" name="select-status" id="select-status">
+
+							</select>
+							<span class="input-group-btn">
+								<button type="submit" class="btn btn-flat btn-success btn-lg">
+								<span class="fa fa-save"></span> Alterar Status
+								</button>
+							</span>
+						</div>
+					</div>
+				</form>
+      </div>
+    </div>
+  </div>
+</div>

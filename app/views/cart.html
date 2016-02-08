@@ -18,7 +18,7 @@
 
 
 
-			<form action="/invoice" method="post">
+			<form action="/area-do-cliente/invoice" method="post">
 			<div class="table-responsive">
 				<table class="table table-condensed">
 					<thead>
@@ -56,7 +56,7 @@
 					          </div>
 									</td>
 									<td class="text-right" id="total.{{image.id}}"><span>R$<h6 class="priceSub" name="quant-{{image.id}}">{{album.price}}</h6></span></td>
-					        <td class="text-center"><a href="" class="del-item-order" data-id="{{image.id}}"><i class="fa fa-trash fa-2x"></i></a></td>
+					        <td class="text-center"><a href="" class="del-item-order text-danger" data-id="{{image.id}}"><i class="fa fa-trash fa-2x"></i></a></td>
 					      </tr>
 				      {% endfor %}
 						{% else %}

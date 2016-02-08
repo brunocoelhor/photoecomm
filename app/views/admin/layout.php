@@ -10,8 +10,8 @@
         <!-- Bootstrap -->
         <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" />
         <!-- Font Awesome -->
-        <!-- <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" /> -->
-        <link href="/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <!-- <link href="/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
         <!-- DataTables style -->
         <link href="/css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
         <!-- Theme style -->
@@ -125,6 +125,12 @@
                                 <span>Pedidos</span>
                             </a>
                         </li>
+                        <li>
+                            <a href="<?php echo site_url();?>/admin/config">
+                                <i class="fa fa-gear"></i>
+                                <span>Configurações</span>
+                            </a>
+                        </li>
                     </ul>
                 </section>
                 <!-- /.sidebar -->
@@ -144,6 +150,7 @@
         <script src="/js/admin/albums.js"></script>
         <script src="/js/admin/customers.js"></script>
         <script src="/js/admin/images.js"></script>
+        <script src="/js/admin/order.js"></script>
 
         <!-- AdminLTE App -->
         <script src="/js/AdminLTE/app.js" type="text/javascript"></script>

@@ -138,7 +138,8 @@ $app->get('/admin/customers/albums_manage/:id', function($id) use($app){
 	$albumsCustomers = albumsCustomers::where('customers_id',$id,'all');
 
  $join = "JOIN albums_customers a ON(albums.id = a.albums_id) WHERE customers_id = $id";
- $manages = albums::all(array('joins' => $join));
+ // $manages = albums::all(array('joins' => $join));
+ $manages = albums::find_by_sql("SELECT a.id as ab, albums.name, albums.cover FROM albums JOIN albums_customers a ON ( albums.id = a.albums_id ) WHERE customers_id = $id");
 
 	$dados = array(
 		'pagina' => 'albums_customer',
@@ -156,9 +157,27 @@ $app->post('/admin/customers/albums_manage/album_add', function() use($app){
 	login::estaLogado('user_logado',$app);
 	$users = users::where('name',$_SESSION['name']);
 
-	$view = $app->view();
-	$view->setTemplatesDirectory(TEMPLATE_ADMIN);
-	$customer = customers::where('id',$id);
+	$customer   = $app->request()->post('customer');
+	$album = $app->request()->post('album');
 
+	$attributes = array(
+		'customers_id' => $customer,
+		'albums_id' => $album
+	);
+	albumsCustomers::cadastrar($attributes);
+	$app->flash('sucesso', 'Relação cadastrada com sucesso !');
+	$app->redirect("/admin/customers/albums_manage/$customer ");
+});
 
+$app->delete('/admin/customers/albums_manage/album_del/:id', function($id) use($app){
+	login::estaLogado('user_logado',$app);
+	$users = users::where('name',$_SESSION['name']);
+
+	$id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
+
+	albumsCustomers::deletar($id);
+	// $images = new images();
+	//
+	// $images->deletar($id);
+	// echo 'deletou';
 });

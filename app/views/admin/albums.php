@@ -75,14 +75,14 @@
 		                        <label for="album-password">Senha</label>
 		                        <input type="password" class="form-control" id="album-password" name="album-password" placeholder="Senha para acessar o Álbum"/>
 		                    </div> -->
-												<div class="form-group">
+												<!-- <div class="form-group">
 		                        <label for="usuario">Usuário Relacionada</label>
 														<select class="form-control" name="album-user" id="album-user">
 														<?php foreach($customers as $customer): ?>
 															<option value="<?php echo $customer->id; ?>"><?php echo $customer->name; ?></option>
 														<?php endforeach; ?>
 														</select>
-		                    </div>
+		                    </div> -->
 		                    <div class="form-group">
 		                        <label for="album-price">Preço</label>
 		                        <input type="number" class="form-control" id="album-price" name="album-price" placeholder="Preço das Fotos"/>
@@ -115,8 +115,8 @@
 			                <label for="album-name">Nome do Álbum</label>
 			                <input type="text" class="form-control" id="album-name" name="album-name" placeholder="Nome do Álbum"/>
 			            </div>
-			            <div class="form-group">
-			                <label for="category">Categoria Relacionada</label>
+			      <div class="form-group">
+			        <label for="category">Categoria Relacionada</label>
 							<select class="form-control" name="album-category" id="album-category">
 							<?php foreach($categories as $category): ?>
 								<option value="<?php echo $category->id; ?>"><?php echo $category->name; ?></option>

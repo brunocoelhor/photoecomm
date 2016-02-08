@@ -76,7 +76,7 @@ body{
     float: right;
 }
 .box.alternate .box-title span.ico i {
-    background-image: url("../img/glyphicons-halflings-white.png");    
+    background-image: url("../img/glyphicons-halflings-white.png");
 }
 
 .box-content, .box-content.collapse.in {
