@@ -28,11 +28,12 @@ $app->map('/logar', function() use($app)
 		if($validar){
 			$user = new users();
 			$user->setCampos(array('email','password'));
-			$logado = $user->logar($email,$pass);
+			$logado = $user->logar($email,hash::hash($pass));
 
 			if(count($logado) == 1){
 			$_SESSION['user_logado'] = true;
 			$_SESSION['name'] = $logado->name;
+			$_SESSION['id'] = $logado->id;
 			$app->redirect('/painel');
 
 			}else{

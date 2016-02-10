@@ -7,13 +7,16 @@
 		<div class="section-title">
 			<h1 class="text-center">{{customer.name}}</h1>
 		</div>
-	    {% if albums | length > 0 %}
-				<div class="col-md-4 col-sm-6 col-xs-12 albuns">
-					<a href="/area-do-cliente/{{customer.id}}/{{albums.slug}}">
-						<img class="img-responsive pic-in" src="{{ site_url()}}/img/album_cover/{{ albums.cover }}" alt="{{ albums.name }}">
-						<button class="btn btn-lg btn-block btn-album">{{ albums.name }}</button>
-					</a>
-				</div>
+	    {% if manages | length > 0 %}
+				{% for manage in manages %}
+						<div class="col-md-4 col-sm-6 col-xs-12 albuns">
+							<a href="/area-do-cliente/{{manage.customers_id}}/{{manage.slug}}">
+								<img class="img-responsive pic-in" src="/img/album_cover/{{manage.cover}}" alt="{{ manage.name }}">
+								<button class="btn btn-lg btn-block btn-album">{{ manage.name }}</button>
+							</a>
+						</div>
+				{% endfor %}
+				<!--  -->
 		{% else %}
 			<h4 class="text-center">Nenhum álbum cadastrado até o momento</h4>
 		{% endif %}

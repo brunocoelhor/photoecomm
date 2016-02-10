@@ -36,7 +36,6 @@ $app->post('/admin/albums/create/', function() use($app){
 
 	$name = $app->request()->post('album-name');
 	$category = $app->request()->post('album-category');
-	//$pass = $app->request()->post('album-password');
 	$price = $app->request()->post('album-price');
 
 	$slug = new slug();

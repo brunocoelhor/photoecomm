@@ -5,6 +5,7 @@ use \app\models\images;
 use \app\classes\validation;
 use \app\models\albums;
 use \app\models\customers;
+use \app\models\albumsCustomers;
 use \app\models\categories;
 use \app\models\orders;
 use \app\models\item_order;
@@ -46,7 +47,7 @@ $app->map('/area-do-cliente/logar', function() use($app,$twig)
 		if($validar){
 			$customer = new customers();
 			$customer->setCampos(array('email','password'));
-			$logado = $customer->logar($email,$pass);
+			$logado = $customer->logar($email,hash::hash($pass));
 
 			if(count($logado) == 1){
 				$_SESSION['user_logado'] = true;
@@ -84,25 +85,32 @@ $app->get('/area-do-cliente/cart', function() use($app,$twig){
 
 	if ($logado){
 		$customer = customers::where('name',$_SESSION['name']);
-	}else{
 
+
+		if(isset($_SESSION['album']) && $_SESSION['album'] !== ""){
+			$categories = \app\models\categories::listar();
+			$album = albums::where('id',$_SESSION['album']);
+
+			$images = \app\models\images::all(array('conditions' => array('purchased = 1')));
+
+			$dados = array(
+				'categories' => $categories,
+				'album' => $album,
+				'images' => $images,
+				'customer' => $customer
+			);
+
+			$template = $twig->loadTemplate('cart.html');
+			$template->display($dados);
+
+		}else{
+			$app->redirect('/');
+		}
 	}
 
-	$categories = \app\models\categories::listar();
-	$album = albums::where('id',$_SESSION['album']);
 
 
-	$images = \app\models\images::all(array('conditions' => array('purchased = 1')));
 
-	$dados = array(
-		'categories' => $categories,
-		'album' => $album,
-		'images' => $images,
-		'customer' => $customer
-	);
-
-	$template = $twig->loadTemplate('cart.html');
-	$template->display($dados);
 
 });
 
@@ -200,18 +208,79 @@ $app->get('/area-do-cliente/:id', function($id) use($app,$twig)
 
 	$categories = categories::listar();
 	$customer = customers::where('id',$id);
-	$album = $customer->albums_id;
+	$id = $customer->id;
 
-	$albums = albums::where('id',$album);
+
+
+	$manages = albums::find_by_sql("SELECT a.id AS ac_id, a.customers_id, albums.name, albums.slug, albums.cover FROM albums JOIN albums_customers a ON ( albums.id = a.albums_id ) WHERE customers_id = $id");
 
 	$dados = array(
 		'categories' => $categories,
 		'customer' => $customer,
-		'albums' => $albums
+		'manages' => $manages
 	);
 
 	$template = $twig->loadTemplate('customer-albums.html');
 	$template->display($dados);
+
+});
+
+$app->get('/area-do-cliente/:id/order', function($id) use($app,$twig)
+{
+
+	$logado= login::banLogado('user_logado',$app);
+
+	if ($logado){
+		$customer = customers::where('name',$_SESSION['name']);
+		$categories = categories::listar();
+		$customer = customers::where('id',$id);
+		$id = $customer->id;
+
+		$orders = orders::all(array('conditions' => array("customer_id = $id")));
+
+		$dados = array(
+			'categories' => $categories,
+			'customer' => $customer,
+			'orders' => $orders
+		);
+
+		$template = $twig->loadTemplate('orders.html');
+		$template->display($dados);
+
+	}else{
+
+	}
+
+});
+$app->get('/area-do-cliente/:id/order/orders_detail/:idOrder', function($id, $idOrder) use($app,$twig)
+{
+
+	$logado= login::banLogado('user_logado',$app);
+
+	if ($logado){
+		$customer = customers::where('name',$_SESSION['name']);
+		$categories = categories::listar();
+		$customer = customers::where('id',$id);
+		$id = $customer->id;
+
+		//$orders = orders::all(array('conditions' => array("id = $idOrder")));
+
+		$items_order = item_order::find_by_sql("SELECT image_id, amount, total, i.name FROM `item_order`
+			JOIN images i ON(item_order.image_id = i.id)
+			WHERE item_order.order_id = $idOrder;");
+
+		$dados = array(
+			'categories' => $categories,
+			'customer' => $customer,
+			'items_order' => $items_order
+		);
+
+		$template = $twig->loadTemplate('order_detail.html');
+		$template->display($dados);
+
+	}else{
+
+	}
 
 });
 

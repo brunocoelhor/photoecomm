@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block titulo %}Photo Commerce - Ensaios{% endblock %}
+
+{% block content %}
+	<div class="container">
+		<div class="section-title">
+			<h1 class="text-center">Pedidos</h1>
+		</div>
+	    {% if orders | length > 0 %}
+      <div class="box-body table-responsive">
+        <table id="example2" class="table table-striped">
+          <thead>
+            <tr>
+              <th>Código</th>
+              <th>Data</th>
+              <th>Hora</th>
+              <th class="text-center">Status</th>
+              <th class="text-center">Ver Detalhes</th>
+            </tr>
+          </thead>
+          <tbody>
+				{% for order in orders %}
+        <tr>
+          <td>{{order.id}}</td>
+          <td class="">{{order.date|date("d/m/Y")}}</td>
+          <td class="">{{order.date|date("H:i")}}</td>
+
+          <td class="text-center">
+            {% if order.status == 0 %}
+                <p class="text-danger"><i class="fa fa-hourglass-start text-danger fa-2x"></i> Pendente</p>
+            {% elseif order.status == 1 %}
+                <p class="text-warning"><i class="fa fa-cogs text-warning fa-2x"></i> Processando</p>
+            {% elseif order.status == 2 %}
+                <p class="text-success"><i class="fa fa-thumbs-o-up text-success fa-2x"></i> Concluído</p>
+            {% else %}
+                <p>Verificando</p>
+            {% endif %}
+          </td>
+          <td class="text-center"><a href="/area-do-cliente/{{order.customer_id}}/order/orders_detail/{{order.id}}" data-id="" class="btn  btn-flat btn-default fa fa-search"> Ver Detalhes</a></td>
+        </tr>
+				{% endfor %}
+          </tbody>
+        </table>
+      </div><!-- /.box-body -->
+		{% else %}
+			<h4 class="text-center">Nenhum pedido cadastrado até o momento</h4>
+		{% endif %}
+	</div>
+{% endblock %}

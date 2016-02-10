@@ -5,3 +5,4 @@ composer.lock
 photocommerce.sql
 photocommerce2.sql
 .phpintel/
+public/img/*

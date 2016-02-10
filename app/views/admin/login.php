@@ -23,7 +23,7 @@
                 </div>
                 <div class="footer">
                     <button type="submit" name="logar" class="btn bg-grey btn-block">Logar-se</button>
-                    <p><a href="#">Esqueci minha senha!</a></p>
+                    <!-- <p><a href="#">Esqueci minha senha!</a></p> -->
                 </div>
             </form>
 

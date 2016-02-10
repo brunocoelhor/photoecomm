@@ -9,7 +9,6 @@
 	</ol>
 </section>
 <section class="content">
-
   <div class="table-responsive">
     <table class="table table-condensed">
       <thead>

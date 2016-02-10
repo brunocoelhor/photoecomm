@@ -153,3 +153,13 @@ $(document.body).on('click', '.del-item-order', function(event){
 		});
 		event.preventDefault();
 });
+
+function granTotalDetail(){
+
+	var sum = 0;
+	$('.subTotal').each(function() {
+	    sum += parseFloat($(this).text());
+	});
+	return $('#grandtotal').html('R$ '+ sum);
+}
+granTotalDetail();

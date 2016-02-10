@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block titulo %}Photo Commerce - Detalhes do Pedidos{% endblock %}
+{% block content %}
+
+	<div class="container">
+		<div class="section-title">
+			<h1 class="text-center">Detalhes do Pedidos</h1>
+		</div>
+  <div class="table-responsive">
+    <table class="table table-condensed">
+      <thead>
+          <tr>
+            <td class=""><strong>Imagem</strong></td>
+            <td class="text-center"><strong>Código</strong></td>
+            <td class="text-center"><strong>Quantidade</strong></td>
+            <td class="text-center"><strong>Total</strong></td>
+          </tr>
+      </thead>
+      <tbody>
+        {% for item_order in items_order %}
+            <tr>
+              <td class=""><img class="item-img" src="/img/photos/thumbs/{{item_order.name}}" alt=""></td>
+              <td class="text-center">{{item_order.image_id}}</td>
+              <td class="text-center"><p>{{item_order.amount}}</p></td>
+              <td class="text-center price">R$ <p name="" class="subTotal">{{item_order.total}}</p></td>
+            </tr>
+        {% endfor %}
+        <tr>
+          <td class="thick-line"></td>
+          <td class="thick-line"></td>
+          <td class="thick-line text-center"><strong>Total</strong></td>
+          <td class="thick-line text-center"><p id="grandtotal"></p></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

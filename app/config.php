@@ -3,7 +3,7 @@ session_start();
 ini_set('display_errors', 1);
 
 define('TEMPLATE_ADMIN', ROOT.'app/views/admin');
-define('SALT', 'lookphotografia');
+define('SALT', 'photocommerce');
 
 
 

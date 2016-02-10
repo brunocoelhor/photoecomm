@@ -16,8 +16,8 @@
 	<!-- Animate.css  -->
 	<link rel="stylesheet" type="text/css" href="{{ site_url()}}/bower_components/animate.css/animate.min.css">
 	<!-- Font-Awesome  -->
-	<!-- <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> -->
-	<link rel="stylesheet" type="text/css" href="{{ site_url()}}/bower_components/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="{{ site_url()}}/bower_components/font-awesome/css/font-awesome.min.css"> -->
 	<!-- Custom Style  -->
 	<link rel="stylesheet" type="text/css" href="{{ site_url()}}/css/style.css">
   <!-- jQuery -->
@@ -75,7 +75,7 @@
 					</a>
 					<ul class="dropdown-menu" role="menu">
 							<li><a href="/area-do-cliente/{{customer.id}}" title="Área do Cliente">Área do Cliente</a>
-							<li><a href="/pedidos/{{customer.id}}" title="Pedidos">Pedidos</a></li>
+							<li><a href="/area-do-cliente/{{customer.id}}/order" title="Pedidos">Pedidos</a></li>
 					</ul>
 					<li><a href="/area-do-cliente/logout" class="log">Logout</a></li>
 				{% else %}

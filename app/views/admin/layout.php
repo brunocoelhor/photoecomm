@@ -53,7 +53,7 @@
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header bg-black">
-                                    <img src="/img/users/<?php echo $users->photo; ?>" class="img-circle" alt="User Image" />
+                                    <img src="/img/user_cover/<?php echo $users->photo; ?>" class="img-circle" alt="User Image" />
                                     <p><?php echo $users->name; ?></p>
                                 </li>
                                 <!-- Menu Footer-->
@@ -79,7 +79,7 @@
                     <!-- Sidebar user panel -->
                     <div class="user-panel">
                         <div class="vert-align text-center image">
-                            <img src="/img/users/<?php echo $users->photo; ?>" class="img-circle" alt="User Image" />
+                            <img src="/img/user_cover/<?php echo $users->photo; ?>" class="img-circle" alt="User Image" />
                         </div>
                         <div class="vert-align text-center info">
                             <p>Olá, <?php echo $users->name; ?></p>

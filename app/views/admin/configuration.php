@@ -29,14 +29,14 @@
 			<!-- Tab panes -->
 			<div class="tab-content">
 			  <div role="tabpanel" class="tab-pane fade in active" id="person">
-					<form class="form-horizontal">
+					<form class="form-horizontal" action="/admin/configuration/person" method="post" enctype="multipart/form-data">
 					<fieldset>
 
 					<!-- Text input-->
 					<div class="form-group">
 					  <label class="col-md-4 control-label" for="name">Nome</label>
 					  <div class="col-md-4">
-					  <input id="name" name="name" type="text" placeholder="Nome" class="form-control input-md" required="">
+					  <input id="name" name="name" type="text" placeholder="Nome" class="form-control input-md" required="" value="<?= $users->name ?>">
 
 					  </div>
 					</div>
@@ -45,7 +45,7 @@
 					<div class="form-group">
 					  <label class="col-md-4 control-label" for="email">E-mail</label>
 					  <div class="col-md-4">
-					  <input id="email" name="email" type="text" placeholder="E-mail" class="form-control input-md" required="">
+					  <input id="email" name="email" type="text" placeholder="E-mail" class="form-control input-md" required="" value="<?= $users->email ?>">
 					  </div>
 					</div>
 
@@ -60,7 +60,7 @@
 							<input id="foto" placeholder="Escolha uma imagem" disabled="disabled" />
 							<div class="fileUpload btn btn-flat btn-primary">
 									<span>Upload</span>
-									<input id="foto" type="file" name="foto" class="upload" />
+									<input id="photo" type="file" name="photo" class="upload" />
 							</div>
 						</div>
 					</div>
