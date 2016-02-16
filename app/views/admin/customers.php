@@ -32,7 +32,7 @@
 	                    </tr>
 	                </thead>
 	                <tbody>
-	                <?php foreach($customers as $customer):?>
+	        <?php foreach($customers as $customer):?>
 						<tr>
 							<td><?php echo $customer->name; ?></td>
 							<td class="hidden"></td>
